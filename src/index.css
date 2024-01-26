@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  zoom: 100%;
+  font-family: "Roboto", sans-serif;
+  color: black;
+  background-color: white;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Dodaję stylowanie dla tabeli i miejsc */
+
+.seat-map {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.seat {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.seat.emergency {
+  background-color: lightblue;
+}
+
+.empty {
+  visibility: hidden;
+}
+
+.gap {
+  height: 20px;
+  width: 20px;
+}
+
+.row-number {
+  width: 20px;
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.column-label {
+  width: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+h1 {
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+}
+button {
+  background-color: lightblue;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+}
+
+@page {
+  margin: 10mm;
+  size: a4 portrait;
+}
+
+@media print {
+  button {
+    display: none;
+  }
+}
