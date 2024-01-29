@@ -1,5 +1,5 @@
 import React from "react";
-import { SEATS } from "../constants/SEATS";
+import { SEATS } from "../constants";
 export const Header = () => {
   return (
     <tr>
