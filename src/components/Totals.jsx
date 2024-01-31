@@ -15,7 +15,7 @@ export const Totals = () => {
       <tbody>
         <tr>
           <td className="label long">rows 1-5</td>
-          <td className="label cell">ZONE 1</td>
+          <td className="label long cell">ZONE 1</td>
           <td className="cell"></td>
           <td className="cell"></td>
           <td className="cell"></td>
@@ -23,7 +23,7 @@ export const Totals = () => {
         </tr>
         <tr>
           <td className="label long">rows 6-28</td>
-          <td className="label cell">ZONE 2</td>
+          <td className="label long cell">ZONE 2</td>
           <td className="cell"></td>
           <td className="cell"></td>
           <td className="cell"></td>
@@ -31,7 +31,7 @@ export const Totals = () => {
         </tr>
         <tr>
           <td className="label long">rows 29-33</td>
-          <td className="label cell">ZONE 3</td>
+          <td className="label long cell">ZONE 3</td>
           <td className="cell"></td>
           <td className="cell"></td>
           <td className="cell"></td>
@@ -39,7 +39,7 @@ export const Totals = () => {
         </tr>
         <tr>
           <td></td>
-          <td className="label cell">TOTAL</td>
+          <td className="label long cell">TOTAL</td>
           <td className="cell"></td>
           <td className="cell"></td>
           <td className="cell final_total"></td>
