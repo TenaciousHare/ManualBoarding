@@ -5,7 +5,6 @@ import { SEATS } from "../constants";
 
 export const Row = ({ row, index, seatsValues }) => {
   const rowIndex = index * 6;
-  console.log(seatsValues);
   return (
     <tr>
       <td className="row-number">{row}</td>

@@ -12,6 +12,7 @@ export const Seat = ({
     row === 1 && (seat === "D" || seat === "E" || seat === "F");
   const isChild = category === "C";
   const isInfant = category === "I";
+  const isCrossed = value === "X";
 
   let className = isExisting ? "empty" : "seat";
   className += isEmergency ? " emergency" : "";
@@ -19,11 +20,12 @@ export const Seat = ({
   className += isAisle ? " aisle" : "";
   className += isChild ? " child" : "";
   className += isInfant ? " infant" : "";
+
   const seatNumber = value || "";
 
   return (
     <td id={id} className={className}>
-      {seatNumber}
+      {isCrossed ? <div className="crossed"></div> : seatNumber}
     </td>
   );
 };
