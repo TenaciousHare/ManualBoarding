@@ -5,6 +5,7 @@ import { shuffle } from "./helpers/shuffle";
 import { SeatMap } from "./components/SeatMap";
 import { Totals } from "./components/Totals";
 import { ControlPanel } from "./components/ControlPanel";
+import { SeatMapLabels } from "./components/SeatMapLabels";
 
 export const App = () => {
   const [seatsValues, setSeatsValues] = useState([]);
@@ -34,7 +35,10 @@ export const App = () => {
   return (
     <div className="wrapper">
       <h1>Seat mapa Boeinga 737-800</h1>
-      <SeatMap seatsValues={seatsValues} />
+      <div className="column_wrapper">
+        <SeatMap seatsValues={seatsValues} />
+        <SeatMapLabels />
+      </div>
       <Totals />
       <ControlPanel
         onPrint={handlePrintSeatMap}
