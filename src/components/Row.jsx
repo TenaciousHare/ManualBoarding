@@ -13,7 +13,6 @@ export const Row = ({ row, index, seatsValues }) => {
           <Seat
             id={rowIndex + seatIndex}
             row={row}
-            seat={seat}
             seatValue={seatsValues[rowIndex + seatIndex]}
           />
           {seat === "C" && <Gap />}

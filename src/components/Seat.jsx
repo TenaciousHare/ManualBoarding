@@ -1,17 +1,19 @@
-export const Seat = ({
-  id,
-  row,
-  seat,
-  seatValue = { value: "", category: "A" },
-}) => {
-  const { value, category } = seatValue;
-  const isEmergency = row === 1 || row === 16 || row === 17;
-  const isWindow = seat === "A" || seat === "F";
-  const isAisle = seat === "C" || seat === "D";
-  const isExisting =
-    row === 1 && (seat === "D" || seat === "E" || seat === "F");
-  const isChild = category === "C";
-  const isInfant = category === "I";
+const defaultSeatValue = {
+  value: "",
+  seat: "X",
+  seatType: "",
+  paxType: "A",
+  evacuationRowColored: false,
+};
+
+export const Seat = ({ id, seatValue = defaultSeatValue }) => {
+  const { value, seat, seatType, paxType, evacuationRowColored } = seatValue;
+  const isEmergency = evacuationRowColored;
+  const isWindow = seatType === "window";
+  const isAisle = seatType === "aisle";
+  const isExisting = seat === "" && value === "";
+  const isChild = paxType === "C";
+  const isInfant = paxType === "I";
   const isCrossed = value === "X";
 
   let className = isExisting ? "empty" : "seat";
@@ -24,7 +26,7 @@ export const Seat = ({
   const seatNumber = value || "";
 
   return (
-    <td id={id} className={className}>
+    <td onClick={(e) => console.log(e.target.id)} id={id} className={className}>
       {isCrossed ? <div className="crossed"></div> : seatNumber}
     </td>
   );

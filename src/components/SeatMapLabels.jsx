@@ -1,25 +1,28 @@
-export function SeatMapLabels() {
+export function SeatMapLabels({ plane }) {
+  const { zone1Start, zone1End, zone2Start, zone2End, zone3Start, zone3End } =
+    plane.zones;
+  const { zone1, zone2, zone3 } = plane.maxPaxPerZone;
   return (
     <div className="seatmap_labels">
       <div className="seatmap_label">
         <p>FWD ZONE</p>
-        <p>ROWS 1 to 5</p>
+        <p>{`ROWS ${zone1Start} to ${zone1End}`}</p>
         <p>
-          MAX PAX <strong>27</strong>
+          MAX PAX <strong>{zone1}</strong>
         </p>
       </div>
       <div className="seatmap_label">
         <p>MID ZONE</p>
-        <p>ROWS 6 to 28</p>
+        <p>{`ROWS ${zone2Start} to ${zone2End}`}</p>
         <p>
-          MAX PAX <strong>132</strong>
+          MAX PAX <strong>{zone2}</strong>
         </p>
       </div>
       <div className="seatmap_label">
         <p>AFT ZONE</p>
-        <p>ROWS 29 to 33</p>
+        <p>{`ROWS ${zone3Start} to ${zone3End}`}</p>
         <p>
-          MAX PAX <strong>30</strong>
+          MAX PAX <strong>{zone3}</strong>
         </p>
       </div>
     </div>

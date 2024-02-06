@@ -7,7 +7,8 @@
 
 body {
   zoom: 100%;
-  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  font-family: sans-serif;
   color: black;
   background-color: white;
 }
@@ -17,22 +18,26 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .column_wrapper {
   display: flex;
-  margin-left: 100px;
+  height: 100%;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .seatmap_labels {
-  width: 100px;
-  height: 700px;
-  position: relative;
+  position: absolute;
+  left: 300px;
+  top: 0;
+  height: 100%;
 }
 .seatmap_label {
   position: absolute;
+  width: 100px;
   margin-left: 10px;
 }
 .seatmap_label:nth-of-type(1) {
@@ -148,7 +153,7 @@ strong {
   left: 0;
   right: 0;
   content: "\D7";
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 300;
   color: black;
   width: 100%;
@@ -160,13 +165,31 @@ h1 {
   font-weight: bold;
   font-size: 2rem;
 }
-button {
+button,
+select {
   background-color: lightblue;
   font-weight: bold;
   border: none;
   border-radius: 5px;
   padding: 5px;
   margin: 10px;
+}
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.code {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 20px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 @page {
@@ -175,7 +198,7 @@ button {
 }
 
 @media print {
-  button {
+  .control-panel {
     display: none;
   }
 }
