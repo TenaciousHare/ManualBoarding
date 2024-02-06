@@ -185,8 +185,7 @@ select {
 .code {
   width: 100%;
   font-size: 1.5rem;
-  padding: 20px;
-
+  padding: 10px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
