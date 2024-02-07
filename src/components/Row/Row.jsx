@@ -1,13 +1,14 @@
 import React from "react";
-import { Seat } from "./Seat";
-import { Gap } from "./Gap";
-import { SEATS } from "../constants";
+import styles from "./Row.module.css";
+import { Seat } from "../Seat/Seat";
+import { Gap } from "../Gap/Gap";
+import { SEATS } from "../../constants";
 
 export const Row = ({ row, index, seatsValues }) => {
   const rowIndex = index * 6;
   return (
     <tr>
-      <td className="row-number">{row}</td>
+      <td className={styles.rowNumber}>{row}</td>
       {SEATS.map((seat, seatIndex) => (
         <React.Fragment key={seat}>
           <Seat
@@ -18,7 +19,7 @@ export const Row = ({ row, index, seatsValues }) => {
           {seat === "C" && <Gap />}
         </React.Fragment>
       ))}
-      <td className="row-number">{row}</td>
+      <td className={styles.rowNumber}>{row}</td>
     </tr>
   );
 };

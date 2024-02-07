@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { SeatMap } from "./components/SeatMap";
-import { Totals } from "./components/Totals";
-import { ControlPanel } from "./components/ControlPanel";
-import { SeatMapLabels } from "./components/SeatMapLabels";
+import { SeatMap } from "./components/SeatMap/SeatMap";
+import { Totals } from "./components/Totals/Totals";
+import { ControlPanel } from "./components/ControlPanel/ControlPanel";
+import { SeatMapLabels } from "./components/SeatMapLabels/SeatMapLabels";
 import { useSeatMap } from "./hooks/useSeatMap";
 import { PLANES, DEFAULT_PLANE } from "./constants";
 import { generateHexCode } from "./helpers/generateHexCode";
+import { Header } from "./components/Header/Header";
+import { Wrapper } from "./components/Wrapper/Wrapper";
 
 export const App = () => {
   const [selectedPlane, setSelectedPlane] = useState(DEFAULT_PLANE);
@@ -15,6 +17,7 @@ export const App = () => {
 
   useEffect(() => {
     handleClearSeatMap();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPlane]);
 
   const handlePrintSeatMap = () => {
@@ -44,13 +47,12 @@ export const App = () => {
   };
 
   return (
-    <div className="wrapper">
-      <div className="code">{code}</div>
-      <h1>{`Seat mapa - ${selectedPlane.name}`}</h1>
-      <div className="column_wrapper">
+    <Wrapper>
+      <Header name={selectedPlane.name} code={code} />
+      <Wrapper isColumn>
         <SeatMap seatsValues={values} plane={selectedPlane} />
         <SeatMapLabels plane={selectedPlane} />
-      </div>
+      </Wrapper>
       <Totals plane={selectedPlane} totals={totals} />
       <ControlPanel
         onPrint={handlePrintSeatMap}
@@ -59,6 +61,6 @@ export const App = () => {
         onSelect={handleSelectedPlane}
         onCountTotals={handleTotals}
       />
-    </div>
+    </Wrapper>
   );
 };

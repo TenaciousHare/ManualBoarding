@@ -1,3 +1,5 @@
+import styles from "./ControlPanel.module.css";
+
 export function ControlPanel({
   onPrint,
   onClearSeatMap,
@@ -6,7 +8,7 @@ export function ControlPanel({
   onCountTotals,
 }) {
   return (
-    <div className="control-panel">
+    <div className={styles.controlPanel}>
       <div>
         {" "}
         <label>Wybierz typ samolotu: </label>
@@ -17,7 +19,7 @@ export function ControlPanel({
           <option value="airbus-a320">Airbus A320 - Lauda</option>
         </select>
       </div>
-      <div className="btn_group">
+      <div className={styles.btnGroup}>
         <button onClick={onGenerate}>Wygeneruj seat mapę</button>
         <button onClick={onCountTotals}> Pokaż totale</button>
         <button onClick={onClearSeatMap}>Wyczyść Seat mapę</button>

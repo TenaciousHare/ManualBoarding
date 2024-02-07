@@ -1,20 +1,21 @@
 import React from "react";
-import { SEATS } from "../constants";
-import { Gap } from "./Gap";
-import { Row } from "./Row";
+import styles from "./SeatMap.module.css";
+import { SEATS } from "../../constants";
+import { Gap } from "../Gap/Gap";
+import { Row } from "../Row/Row";
 
 export const SeatMap = ({ seatsValues, plane }) => {
   const ROWS = plane.rows;
   const GAP1 = plane.zones.zone1End;
   const GAP2 = plane.zones.zone2End;
   return (
-    <table className="seat-map">
+    <table className={styles.seatMap}>
       <thead>
         <tr>
           <th></th>
           {SEATS.map((seat) => (
             <React.Fragment key={seat}>
-              <th className="column-label">{seat}</th>
+              <th className={styles.columnLabel}>{seat}</th>
               {seat === "C" && <th></th>}
             </React.Fragment>
           ))}
