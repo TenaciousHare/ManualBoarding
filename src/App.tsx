@@ -9,6 +9,7 @@ import { useSeatMap } from "./hooks/useSeatMap";
 import { PLANES, DEFAULT_PLANE } from "./constants";
 import { Zone } from "./types/interfaces";
 import { generateHexCode } from "./helpers/generateHexCode";
+import { Footer } from "./components/Footer/Footer";
 
 export const App: React.FC = () => {
   const [selectedPlane, setSelectedPlane] = useState(DEFAULT_PLANE);
@@ -53,20 +54,24 @@ export const App: React.FC = () => {
   };
 
   return (
-    <Wrapper>
-      <Header name={selectedPlane.name} code={code} />
-      <Wrapper isColumn>
-        <SeatMap seatsValues={values} plane={selectedPlane} />
-        <SeatMapLabels plane={selectedPlane} />
+    <>
+      {" "}
+      <Wrapper>
+        <Header name={selectedPlane.name} code={code} />
+        <Wrapper isColumn>
+          <SeatMap seatsValues={values} plane={selectedPlane} />
+          <SeatMapLabels plane={selectedPlane} />
+        </Wrapper>
+        <Totals plane={selectedPlane} totals={totals} />
+        <ControlPanel
+          onPrint={handlePrintSeatMap}
+          onClearSeatMap={handleClearSeatMap}
+          onGenerate={handleGenerateSeatMap}
+          onSelect={handleSelectedPlane}
+          onCountTotals={handleTotals}
+        />
       </Wrapper>
-      <Totals plane={selectedPlane} totals={totals} />
-      <ControlPanel
-        onPrint={handlePrintSeatMap}
-        onClearSeatMap={handleClearSeatMap}
-        onGenerate={handleGenerateSeatMap}
-        onSelect={handleSelectedPlane}
-        onCountTotals={handleTotals}
-      />
-    </Wrapper>
+      <Footer />
+    </>
   );
 };
