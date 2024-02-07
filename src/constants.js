@@ -163,14 +163,14 @@ export const PLANES = [
     ],
     notExistingSeats: ["12A", "12F", "13A", "13B", "13C", "13D", "13E", "13F"],
     notExisitingRows: 13,
-    totalRows: ["rows 1-4", "rows 5-21", "rows 22-25", ""],
+    totalRows: ["rows 1-4", "rows 5-21", "rows 22-26", ""],
     zones: {
       zone1Start: 1,
       zone1End: 4,
       zone2Start: 5,
       zone2End: 21,
       zone3Start: 22,
-      zone3End: 25,
+      zone3End: 26,
     },
     maxPaxPerZone: {
       zone1: 24,
