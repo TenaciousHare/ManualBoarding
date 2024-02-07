@@ -1,18 +1,20 @@
+import React from "react";
 import styles from "./ControlPanel.module.css";
+import { ControlPanelProps } from "../../types/interfaces";
 
-export function ControlPanel({
+export const ControlPanel: React.FC<ControlPanelProps> = ({
   onPrint,
   onClearSeatMap,
   onGenerate,
   onSelect,
   onCountTotals,
-}) {
+}) => {
   return (
     <div className={styles.controlPanel}>
       <div>
         {" "}
-        <label>Wybierz typ samolotu: </label>
-        <select onChange={onSelect} defaultValue="boeing-737-800">
+        <label htmlFor="plane">Wybierz typ samolotu: </label>
+        <select id="plane" onChange={onSelect} defaultValue="boeing-737-800">
           <option value="boeing-737-800">Boeing 737-800</option>
           <option value="boeing-737-8200">Boeing 737-8200</option>
           <option value="boeing-737-700">Boeing 737-700</option>
@@ -27,4 +29,4 @@ export function ControlPanel({
       </div>
     </div>
   );
-}
+};

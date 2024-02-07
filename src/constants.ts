@@ -1,32 +1,9 @@
-export const SEATS = ["A", "B", "C", "D", "E", "F"];
-export const TOTAL_HEADERS = ["", "", "A", "C", "TTL", "I"];
+import { Plane } from "./types/interfaces";
 
-export const ROWS = [];
-for (let i = 1; i <= 33; i++) {
-  if (i !== 13) {
-    ROWS.push(i);
-  }
-}
-export const SEQ = [];
-for (let i = 1; i <= 189; i++) {
-  SEQ.push(i);
-}
+export const SEATS: string[] = ["A", "B", "C", "D", "E", "F"];
+export const TOTAL_HEADERS: string[] = ["", "", "A", "C", "TTL", "I"];
 
-export const WINDOW_SEATS = [
-  0, 5, 6, 11, 12, 17, 18, 23, 24, 29, 30, 35, 36, 41, 42, 47, 48, 53, 54, 59,
-  60, 65, 66, 71, 72, 77, 78, 83, 84, 89, 90, 95, 96, 101, 102, 107, 108, 113,
-  114, 119, 120, 125, 126, 131, 132, 137, 138, 143, 144, 149, 150, 155, 156,
-  161, 162, 167, 168, 173, 174, 179, 180, 185, 186, 191,
-];
-
-export const TOTAL_LABELS = [
-  { zone: "ZONE 1" },
-  { zone: "ZONE 2" },
-  { zone: "ZONE 3" },
-  { zone: "TOTAL" },
-];
-
-export const PLANES = [
+export const PLANES: Plane[] = [
   {
     name: "Boeing 737-800",
     type: "boeing-737-800",
@@ -97,6 +74,12 @@ export const PLANES = [
     ],
     notExisitingRows: 13,
     totalRows: ["rows 1-5", "rows 6-28", "rows 29-33", ""],
+    totalLabels: [
+      { zone: "ZONE 1" },
+      { zone: "ZONE 2" },
+      { zone: "ZONE 3" },
+      { zone: "TOTAL" },
+    ],
     zones: {
       zone1Start: 1,
       zone1End: 5,
@@ -164,6 +147,12 @@ export const PLANES = [
     notExistingSeats: ["12A", "12F", "13A", "13B", "13C", "13D", "13E", "13F"],
     notExisitingRows: 13,
     totalRows: ["rows 1-4", "rows 5-21", "rows 22-26", ""],
+    totalLabels: [
+      { zone: "ZONE 1" },
+      { zone: "ZONE 2" },
+      { zone: "ZONE 3" },
+      { zone: "TOTAL" },
+    ],
     zones: {
       zone1Start: 1,
       zone1End: 4,
@@ -281,6 +270,12 @@ export const PLANES = [
     ],
     notExisitingRows: 13,
     totalRows: ["rows 1-6", "rows 7-29", "rows 30-35", ""],
+    totalLabels: [
+      { zone: "ZONE 1" },
+      { zone: "ZONE 2" },
+      { zone: "ZONE 3" },
+      { zone: "TOTAL" },
+    ],
     zones: {
       zone1Start: 1,
       zone1End: 6,
@@ -346,6 +341,12 @@ export const PLANES = [
     notExistingSeats: [],
     notExisitingRows: 0,
     totalRows: ["rows 1-10", "rows 11-20", "rows 21-30", ""],
+    totalLabels: [
+      { zone: "ZONE 1" },
+      { zone: "ZONE 2" },
+      { zone: "ZONE 3" },
+      { zone: "TOTAL" },
+    ],
     zones: {
       zone1Start: 1,
       zone1End: 10,
@@ -362,6 +363,6 @@ export const PLANES = [
   },
 ];
 
-export const DEFAULT_PLANE = PLANES.find(
+export const DEFAULT_PLANE: Plane = PLANES.find(
   (plane) => plane.type === "boeing-737-800"
-);
+)!;

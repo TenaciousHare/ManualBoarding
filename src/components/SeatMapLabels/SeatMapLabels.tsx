@@ -1,9 +1,13 @@
+import React from "react";
 import styles from "./SeatMapLabels.module.css";
+import { SeatMapLabelsProps } from "../../types/interfaces";
 
-export function SeatMapLabels({ plane }) {
-  const { zone1Start, zone1End, zone2Start, zone2End, zone3Start, zone3End } =
-    plane.zones;
-  const { zone1, zone2, zone3 } = plane.maxPaxPerZone;
+export const SeatMapLabels: React.FC<SeatMapLabelsProps> = ({
+  plane: {
+    zones: { zone1Start, zone1End, zone2Start, zone2End, zone3Start, zone3End },
+    maxPaxPerZone: { zone1, zone2, zone3 },
+  },
+}) => {
   return (
     <div className={styles.seatMapLabels}>
       <div className={styles.seatMapLabel}>
@@ -29,4 +33,4 @@ export function SeatMapLabels({ plane }) {
       </div>
     </div>
   );
-}
+};

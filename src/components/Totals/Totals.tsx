@@ -1,6 +1,12 @@
+import React from "react";
 import styles from "./Totals.module.css";
-import { TOTAL_HEADERS, TOTAL_LABELS } from "../../constants";
-export const Totals = ({ plane: { totalRows }, totals }) => {
+import { TOTAL_HEADERS } from "../../constants";
+import { TotalsProps } from "../../types/interfaces";
+
+export const Totals: React.FC<TotalsProps> = ({
+  plane: { totalRows, totalLabels },
+  totals,
+}) => {
   const emptyCell =
     totals[3].adults === 0 &&
     totals[3].children === 0 &&
@@ -22,7 +28,7 @@ export const Totals = ({ plane: { totalRows }, totals }) => {
         </tr>
       </thead>
       <tbody>
-        {TOTAL_LABELS.map((label, index) => (
+        {totalLabels.map((label, index) => (
           <tr key={label.zone}>
             <td className={index < 3 ? labelLong : ""}>{totalRows[index]}</td>
             <td className={labelLongCell}>{label.zone}</td>
@@ -37,10 +43,13 @@ export const Totals = ({ plane: { totalRows }, totals }) => {
                 : ""}
             </td>
             <td className={index === 3 ? finalTotalCell : cell}>
-              {totals[index].adults !== undefined &&
-              totals[index].children !== undefined &&
+              {totals[index]?.adults !== undefined &&
+              totals[index]?.children !== undefined &&
               !emptyCell
-                ? totals[index].adults + totals[index].children
+                ? (
+                    (totals[index]?.adults ?? 0) +
+                    (totals[index]?.children ?? 0)
+                  ).toString()
                 : ""}
             </td>
             <td className={index === 3 ? finalTotalCell : cell}>

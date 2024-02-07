@@ -1,10 +1,22 @@
 import React from "react";
 import styles from "./SeatMap.module.css";
 import { SEATS } from "../../constants";
+import { SeatValue } from "../../types/interfaces";
 import { Gap } from "../Gap/Gap";
 import { Row } from "../Row/Row";
 
-export const SeatMap = ({ seatsValues, plane }) => {
+interface SeatMapProps {
+  seatsValues: SeatValue[];
+  plane: {
+    rows: number[];
+    zones: {
+      zone1End: number;
+      zone2End: number;
+    };
+  };
+}
+
+export const SeatMap: React.FC<SeatMapProps> = ({ seatsValues, plane }) => {
   const ROWS = plane.rows;
   const GAP1 = plane.zones.zone1End;
   const GAP2 = plane.zones.zone2End;

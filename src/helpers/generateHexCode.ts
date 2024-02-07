@@ -1,6 +1,5 @@
-export function generateHexCode() {
-  // Tworzymy tablicę cyfr i liter od A do F
-  let digits = [
+export function generateHexCode(): string {
+  const digits = [
     "0",
     "1",
     "2",
@@ -18,11 +17,9 @@ export function generateHexCode() {
     "E",
     "F",
   ];
-  // Losujemy trzy elementy z tablicy i łączymy je w ciąg
   let hexCode = "";
   for (let i = 0; i < 3; i++) {
     hexCode += digits[Math.floor(Math.random() * 16)];
   }
-  // Zwracamy kod hex z poprzedzającym znakiem #
   return "#" + hexCode;
 }

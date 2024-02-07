@@ -1,6 +1,8 @@
+import React from "react";
 import styles from "./Header.module.css";
+import { HeaderProps } from "../../types/interfaces";
 
-export const Header = ({ name, code }) => {
+export const Header: React.FC<HeaderProps> = ({ name, code }) => {
   return (
     <>
       <div className={styles.code}>{code}</div>
