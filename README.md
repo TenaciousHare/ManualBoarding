@@ -36,6 +36,6 @@ Aplikacja **Manual Boarding** służy do generowania losowej mapy miejsc w samol
 
 ## Link do aplikacji
 
-Aplikację można znaleźć pod tym linkiem: [Manual Boarding]('https://manual-boarding.netlify.app/').
+Aplikację można znaleźć pod tym linkiem: [Manual Boarding](https://manual-boarding.netlify.app/).
 
 Dziękuję za korzystanie z mojej aplikacji! 🛫
