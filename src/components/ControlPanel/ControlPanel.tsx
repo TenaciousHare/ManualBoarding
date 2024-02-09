@@ -11,16 +11,20 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
 }) => {
   return (
     <div className={styles.controlPanel}>
-      <div>
-        {" "}
+      <form>
         <label htmlFor="plane">Wybierz typ samolotu: </label>
-        <select id="plane" onChange={onSelect} defaultValue="boeing-737-800">
+        <select
+          name="plane"
+          id="plane"
+          onChange={onSelect}
+          defaultValue="boeing-737-800"
+        >
           <option value="boeing-737-800">Boeing 737-800</option>
           <option value="boeing-737-8200">Boeing 737-8200</option>
           <option value="boeing-737-700">Boeing 737-700</option>
           <option value="airbus-a320">Airbus A320 - Lauda</option>
         </select>
-      </div>
+      </form>
       <div className={styles.btnGroup}>
         <button onClick={onGenerate}>Wygeneruj seat mapę</button>
         <button onClick={onCountTotals}> Pokaż totale</button>
