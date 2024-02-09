@@ -1,13 +1,12 @@
-import React from "react";
 import styles from "./SeatMapLabels.module.css";
 import { SeatMapLabelsProps } from "../../types/interfaces";
 
-export const SeatMapLabels: React.FC<SeatMapLabelsProps> = ({
+export const SeatMapLabels = ({
   plane: {
     zones: { zone1Start, zone1End, zone2Start, zone2End, zone3Start, zone3End },
     maxPaxPerZone: { zone1, zone2, zone3 },
   },
-}) => {
+}: SeatMapLabelsProps) => {
   return (
     <div className={styles.seatMapLabels}>
       <div className={styles.seatMapLabel}>

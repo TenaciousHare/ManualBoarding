@@ -1,11 +1,7 @@
-import React from "react";
 import styles from "./Wrapper.module.css";
 import { WrapperProps } from "../../types/interfaces";
 
-export const Wrapper: React.FC<WrapperProps> = ({
-  children,
-  isColumn = false,
-}) => {
+export const Wrapper = ({ children, isColumn = false }: WrapperProps) => {
   return (
     <div className={isColumn ? styles.column : styles.wrapper}>{children}</div>
   );

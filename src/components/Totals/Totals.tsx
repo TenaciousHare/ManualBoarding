@@ -1,12 +1,11 @@
-import React from "react";
 import styles from "./Totals.module.css";
 import { TOTAL_HEADERS } from "../../constants";
 import { TotalsProps } from "../../types/interfaces";
 
-export const Totals: React.FC<TotalsProps> = ({
+export const Totals = ({
   plane: { totalRows, totalLabels },
   totals,
-}) => {
+}: TotalsProps) => {
   const emptyCell =
     totals[3].adults === 0 &&
     totals[3].children === 0 &&

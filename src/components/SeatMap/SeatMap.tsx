@@ -16,7 +16,7 @@ interface SeatMapProps {
   };
 }
 
-export const SeatMap: React.FC<SeatMapProps> = ({ seatsValues, plane }) => {
+export const SeatMap = ({ seatsValues, plane }: SeatMapProps) => {
   const ROWS = plane.rows;
   const GAP1 = plane.zones.zone1End;
   const GAP2 = plane.zones.zone2End;

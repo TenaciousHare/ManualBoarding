@@ -5,11 +5,14 @@ import { Gap } from "../Gap/Gap";
 import { SEATS } from "../../constants";
 import { RowProps } from "../../types/interfaces";
 
-export const Row: React.FC<RowProps> = ({ row, index, seatsValues }) => {
+export const Row = ({ row, index, seatsValues }: RowProps) => {
   const rowIndex = index * 6;
+  console.log(seatsValues);
   return (
     <tr>
-      <td className={styles.rowNumber}>{row}</td>
+      <td data-testid={row} className={styles.rowNumber}>
+        {row}
+      </td>
       {SEATS.map((seat, seatIndex) => (
         <React.Fragment key={seat}>
           <Seat
@@ -19,7 +22,9 @@ export const Row: React.FC<RowProps> = ({ row, index, seatsValues }) => {
           {seat === "C" && <Gap />}
         </React.Fragment>
       ))}
-      <td className={styles.rowNumber}>{row}</td>
+      <td data-testid={row} className={styles.rowNumber}>
+        {row}
+      </td>
     </tr>
   );
 };

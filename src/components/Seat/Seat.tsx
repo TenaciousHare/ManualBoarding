@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Seat.module.css";
 import { SeatProps } from "../../types/interfaces";
 const defaultSeatValue = {
@@ -6,13 +5,11 @@ const defaultSeatValue = {
   seat: "X",
   seatType: "",
   paxType: "A",
+  evacuationRow: false,
   evacuationRowColored: false,
 };
 
-export const Seat: React.FC<SeatProps> = ({
-  id,
-  seatValue = defaultSeatValue,
-}) => {
+export const Seat = ({ id, seatValue = defaultSeatValue }: SeatProps) => {
   const seatId = String(id);
   const { value, seat, paxType, evacuationRowColored } = seatValue;
   const isEmergency = evacuationRowColored;
@@ -30,7 +27,11 @@ export const Seat: React.FC<SeatProps> = ({
 
   return (
     <td id={seatId} className={className}>
-      {isCrossed ? <div className={styles.crossed}></div> : seatNumber}
+      {isCrossed ? (
+        <div data-testid="crossed" className={styles.crossed}></div>
+      ) : (
+        seatNumber
+      )}
     </td>
   );
 };

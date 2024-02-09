@@ -11,7 +11,7 @@ import { Zone } from "./types/interfaces";
 import { generateHexCode } from "./helpers/generateHexCode";
 import { Footer } from "./components/Footer/Footer";
 
-export const App: React.FC = () => {
+export const App = () => {
   const [selectedPlane, setSelectedPlane] = useState(DEFAULT_PLANE);
   const [values, setValues, countZones] = useSeatMap(
     selectedPlane || DEFAULT_PLANE
@@ -55,7 +55,6 @@ export const App: React.FC = () => {
 
   return (
     <>
-      {" "}
       <Wrapper>
         <Header name={selectedPlane.name} code={code} />
         <Wrapper isColumn>

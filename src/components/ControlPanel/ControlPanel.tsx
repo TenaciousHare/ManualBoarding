@@ -1,14 +1,13 @@
-import React from "react";
 import styles from "./ControlPanel.module.css";
 import { ControlPanelProps } from "../../types/interfaces";
 
-export const ControlPanel: React.FC<ControlPanelProps> = ({
+export const ControlPanel = ({
   onPrint,
   onClearSeatMap,
   onGenerate,
   onSelect,
   onCountTotals,
-}) => {
+}: ControlPanelProps) => {
   return (
     <div className={styles.controlPanel}>
       <form>

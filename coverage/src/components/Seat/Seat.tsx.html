@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/36</span>
+                <span class='fraction'>37/37</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/36</span>
+                <span class='fraction'>37/37</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -99,78 +99,81 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import React from "react";</span></span></span>
-<span class="cstat-no" title="statement not covered" >import styles from "./Seat.module.css";</span>
-<span class="cstat-no" title="statement not covered" >import { SeatProps } from "../../types/interfaces";</span>
-<span class="cstat-no" title="statement not covered" >const defaultSeatValue = {</span>
-<span class="cstat-no" title="statement not covered" >  value: "",</span>
-<span class="cstat-no" title="statement not covered" >  seat: "X",</span>
-<span class="cstat-no" title="statement not covered" >  seatType: "",</span>
-<span class="cstat-no" title="statement not covered" >  paxType: "A",</span>
-<span class="cstat-no" title="statement not covered" >  evacuationRowColored: false,</span>
-<span class="cstat-no" title="statement not covered" >};</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export const Seat: React.FC&lt;SeatProps&gt; = ({</span>
-<span class="cstat-no" title="statement not covered" >  id,</span>
-<span class="cstat-no" title="statement not covered" >  seatValue = defaultSeatValue,</span>
-<span class="cstat-no" title="statement not covered" >}) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const seatId = String(id);</span>
-<span class="cstat-no" title="statement not covered" >  const { value, seat, paxType, evacuationRowColored } = seatValue;</span>
-<span class="cstat-no" title="statement not covered" >  const isEmergency = evacuationRowColored;</span>
-<span class="cstat-no" title="statement not covered" >  const isExisting = seat === "" &amp;&amp; value === "";</span>
-<span class="cstat-no" title="statement not covered" >  const isChild = paxType === "C";</span>
-<span class="cstat-no" title="statement not covered" >  const isInfant = paxType === "I";</span>
-<span class="cstat-no" title="statement not covered" >  const isCrossed = value === "X";</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  let className = isExisting ? styles.empty : styles.seat;</span>
-<span class="cstat-no" title="statement not covered" >  className += isEmergency ? ` ${styles.emergency}` : "";</span>
-<span class="cstat-no" title="statement not covered" >  className += isChild ? ` ${styles.child}` : "";</span>
-<span class="cstat-no" title="statement not covered" >  className += isInfant ? ` ${styles.infant}` : "";</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const seatNumber = value || "";</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;td id={seatId} className={className}&gt;</span>
-<span class="cstat-no" title="statement not covered" >      {isCrossed ? &lt;div className={styles.crossed}&gt;&lt;/div&gt; : seatNumber}</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/td&gt;</span>
-<span class="cstat-no" title="statement not covered" >  );</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">218x</span>
+<span class="cline-any cline-yes">218x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-yes">221x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styles from "./Seat.module.css";
+import { SeatProps } from "../../types/interfaces";
+const defaultSeatValue = {
+  value: "",
+  seat: "X",
+  seatType: "",
+  paxType: "A",
+  evacuationRow: false,
+  evacuationRowColored: false,
+};
+&nbsp;
+export const Seat = ({ id, seatValue = defaultSeatValue }: SeatProps) =&gt; {
+  const seatId = String(id);
+  const { value, seat, paxType, evacuationRowColored } = seatValue;
+  const isEmergency = evacuationRowColored;
+  const isExisting = seat === "" &amp;&amp; value === "";
+  const isChild = paxType === "C";
+  const isInfant = paxType === "I";
+  const isCrossed = value === "X";
+&nbsp;
+  let className = isExisting ? styles.empty : styles.seat;
+  className += isEmergency ? ` ${styles.emergency}` : "";
+  className += isChild ? ` ${styles.child}` : "";
+  className += isInfant ? ` ${styles.infant}` : "";
+&nbsp;
+  const seatNumber = value || "";
+&nbsp;
+  return (
+    &lt;td id={seatId} className={className}&gt;
+      {isCrossed ? (
+        &lt;div data-testid="crossed" className={styles.crossed}&gt;&lt;/div&gt;
+      ) : (
+        seatNumber
+      )}
+    &lt;/td&gt;
+  );
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -178,7 +181,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-09T10:32:36.368Z
+                at 2024-02-09T13:21:30.915Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
