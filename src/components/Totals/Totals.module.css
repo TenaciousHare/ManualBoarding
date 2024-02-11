@@ -1,0 +1,36 @@
+/*
+totals
+label
+cell
+long
+finalTotal
+*/
+
+.totals {
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-right: 40px;
+}
+.cell {
+  margin: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.label {
+  width: 40px;
+  padding: 2px;
+}
+
+.long {
+  width: 60px;
+}
+
+.finalTotal {
+  background-color: lightblue;
+}
