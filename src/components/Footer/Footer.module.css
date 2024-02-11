@@ -1,0 +1,19 @@
+.footer {
+  margin: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: black;
+}
+
+@media print {
+  .footer {
+    display: none;
+  }
+}
