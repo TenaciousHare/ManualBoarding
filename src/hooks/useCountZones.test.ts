@@ -299,6 +299,28 @@ describe("useCountZones", () => {
     act(() => {
       countZones(plane, seatMap);
     });
+    expect(result.current[0]).toEqual({
+      zone1: {
+        adults: 3,
+        children: 1,
+        infants: 1,
+      },
+      zone2: {
+        adults: 3,
+        children: 1,
+        infants: 1,
+      },
+      zone3: {
+        adults: 3,
+        children: 1,
+        infants: 1,
+      },
+      zone4: {
+        adults: 12,
+        children: 4,
+        infants: 4,
+      },
+    });
     act(() => {
       countZones(plane, seatMap, true);
     });

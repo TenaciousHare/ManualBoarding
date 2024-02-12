@@ -1,6 +1,6 @@
 // hexCode.test.js
 import { expect, test } from "vitest";
-import { generateHexCode } from "./generateHexCode";
+import { generateHexCode } from "../generateHexCode";
 
 test("generateHexCode returns a valid hex color", () => {
   const hex = generateHexCode();

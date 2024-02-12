@@ -21,7 +21,7 @@ export const SeatMap = ({ seatsValues, plane }: SeatMapProps) => {
   const GAP1 = plane.zones.zone1End;
   const GAP2 = plane.zones.zone2End;
   return (
-    <table className={styles.seatMap}>
+    <table data-testid="seat-map" className={styles.seatMap}>
       <thead>
         <tr>
           <th></th>

@@ -16,7 +16,7 @@ export const Totals = ({
   const labelLongCell = `${styles.label} ${styles.long} ${styles.cell}`;
   const finalTotalCell = `${styles.finalTotal} ${styles.cell}`;
   return (
-    <table className={styles.totals}>
+    <table data-testid="totals" className={styles.totals}>
       <thead>
         <tr>
           {TOTAL_HEADERS.map((header, index) => (

@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { Plane, SeatValue } from "../types/interfaces";
+import { generateSeqNumbersArray } from "../helpers/generateSeqNumbersArray";
+import { shuffleArray } from "../helpers/shuffleArray";
+import { getSeatType } from "../helpers/getSeatType";
 
 export function useSeatMap(
   plane: Plane
 ): [SeatValue[], (plane: Plane, clear?: boolean) => void] {
   const [seatValues, setSeatValues] = useState<SeatValue[]>([]);
+
+  const MAX_INF = 18;
+  const MAX_CHD = 40;
 
   // funkcja, która tworzy tablicę miejsc w samolocie
   function createSeatMap(rows: number[]): SeatValue[] {
@@ -27,22 +33,6 @@ export function useSeatMap(
     }
 
     return seatMap;
-  }
-
-  function getSeatType(seat: string): string {
-    switch (seat) {
-      case "A":
-      case "F":
-        return "window";
-      case "C":
-      case "D":
-        return "aisle";
-      case "B":
-      case "E":
-        return "mid";
-      default:
-        return "unknown";
-    }
   }
 
   // funkcja, która usuwa nieistniejące miejsca z tablicy miejsc w samolocie
@@ -70,35 +60,10 @@ export function useSeatMap(
     return seatMap;
   }
 
-  function createArrayOfSeq(seq: number): number[] {
-    const seqArr = [];
-    for (let i = 1; i <= seq; i++) {
-      seqArr.push(i);
-    }
-    return seqArr;
-  }
-  const seqArray = createArrayOfSeq(plane.seq);
+  const seqArray = generateSeqNumbersArray(plane.seq);
 
-  function shuffle<T>(array: T[]): T[] {
-    let currentIndex = array.length,
-      temporaryValue: T,
-      randomIndex: number;
+  const shuffledSeqArr: number[] = shuffleArray(seqArray);
 
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
-
-  const shuffledSeqArr: number[] = shuffle(seqArray);
-
-  // funkcja, która dodaje do obiektu miejsca losowe numery sekwencyjne z tablicy
   function addValuesToSeats(
     seatMap: SeatValue[],
     sequences: number[],
@@ -155,9 +120,6 @@ export function useSeatMap(
 
     return seatMap;
   }
-
-  const MAX_INF = 18;
-  const MAX_CHD = 40;
 
   function addPaxTypesInfo(seatMap: SeatValue[]): SeatValue[] {
     let childCounter = 0;
