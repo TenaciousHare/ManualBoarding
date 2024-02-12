@@ -26,7 +26,7 @@ export const ControlPanel = ({
       </form>
       <div className={styles.btnGroup}>
         <button onClick={onGenerate}>Wygeneruj seat mapę</button>
-        <button onClick={onCountTotals}> Pokaż totale</button>
+        <button onClick={onCountTotals}>Pokaż totale</button>
         <button onClick={onClearSeatMap}>Wyczyść Seat mapę</button>
         <button onClick={onPrint}>Wydrukuj Seat Mapę</button>
       </div>

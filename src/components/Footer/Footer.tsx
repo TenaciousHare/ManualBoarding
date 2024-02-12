@@ -2,7 +2,7 @@ import styles from "./Footer.module.css";
 
 export const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer data-testid="footer" className={styles.footer}>
       <p>
         <a href="https://github.com/TenaciousHare/ManualBoarding">
           Repozytorium GitHub

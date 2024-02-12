@@ -8,7 +8,7 @@ export const SeatMapLabels = ({
   },
 }: SeatMapLabelsProps) => {
   return (
-    <div className={styles.seatMapLabels}>
+    <div data-testid="seat-map-labels" className={styles.seatMapLabels}>
       <div role="listitem" className={styles.seatMapLabel}>
         <p>FWD ZONE</p>
         <p>{`ROWS ${zone1Start} to ${zone1End}`}</p>
