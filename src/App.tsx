@@ -27,6 +27,7 @@ export const App = () => {
   const handleClearSeatMap = () => {
     setValues(selectedPlane, true);
     setTotals(selectedPlane, values, true);
+    setCode("");
   };
   const handleGenerateSeatMap = () => {
     setValues(selectedPlane);
