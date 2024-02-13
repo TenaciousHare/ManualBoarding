@@ -11,7 +11,7 @@ describe("App", () => {
   it("renders header correctly", () => {
     const header = screen.getByRole("heading");
     expect(header).toBeVisible();
-    expect(header).toHaveTextContent(`Seat mapa - ${PLANES[0].name}`);
+    expect(header).toHaveTextContent(`Seat map - ${PLANES[0].name}`);
   });
 
   it("renders seat map correctly", () => {
@@ -24,11 +24,11 @@ describe("App", () => {
   });
 
   it("renders control panel correctly", () => {
-    const printButton = screen.getByRole("button", { name: /Wydrukuj/i });
-    const clearButton = screen.getByRole("button", { name: /Wyczyść/i });
-    const generateButton = screen.getByRole("button", { name: /Wygeneruj/i });
+    const printButton = screen.getByRole("button", { name: /Print/i });
+    const clearButton = screen.getByRole("button", { name: /Clear/i });
+    const generateButton = screen.getByRole("button", { name: /Generate/i });
     const select: HTMLSelectElement = screen.getByRole("combobox");
-    const countButton = screen.getByRole("button", { name: /Pokaż/i });
+    const countButton = screen.getByRole("button", { name: /Count/i });
     expect(printButton).toBeVisible();
     expect(clearButton).toBeVisible();
     expect(generateButton).toBeVisible();
@@ -53,14 +53,14 @@ describe("App", () => {
 
     fireEvent.change(select, { target: { value: PLANES[1].type } });
 
-    expect(header).toHaveTextContent(`Seat mapa - ${PLANES[1].name}`);
+    expect(header).toHaveTextContent(`Seat map - ${PLANES[1].name}`);
 
     expect(seatMapLabels.children.length).toBe(3);
   });
 
   it("generates new code after clicking generate button", () => {
     const code = screen.getByTestId("code");
-    const generateButton = screen.getByRole("button", { name: /Wygeneruj/i });
+    const generateButton = screen.getByRole("button", { name: /Generate/i });
 
     const initialCode = code.textContent;
     fireEvent.click(generateButton);
@@ -70,7 +70,7 @@ describe("App", () => {
   });
 
   it("calls window.print after clicking print button", () => {
-    const printButton = screen.getByRole("button", { name: /Wydrukuj/i });
+    const printButton = screen.getByRole("button", { name: /Print/i });
 
     const printMock = vi.spyOn(window, "print").mockImplementation(() => {});
 
@@ -97,8 +97,8 @@ describe("App", () => {
   });
 
   it("updates totals after clicking count button", () => {
-    const generateButton = screen.getByRole("button", { name: /Wygeneruj/i });
-    const countButton = screen.getByRole("button", { name: /Pokaż/i });
+    const generateButton = screen.getByRole("button", { name: /Generate/i });
+    const countButton = screen.getByRole("button", { name: /Count/i });
     const totals = screen.getByTestId("totals");
 
     const initialTotals = totals.textContent;

@@ -20,6 +20,7 @@ describe("ControlPanel component", () => {
     onGenerate,
     onSelect,
     onCountTotals,
+    isChecked: false,
   };
 
   test("renders without crashing", () => {
@@ -34,26 +35,26 @@ describe("ControlPanel component", () => {
   test("ControlPanel renders correctly and handles user interactions", () => {
     render(<ControlPanel {...mockProps} />);
 
-    expect(screen.getByText("Wybierz typ samolotu:")).toBeInTheDocument();
+    expect(screen.getByText("Select the aircraft type:")).toBeInTheDocument();
     expect(
-      screen.getByRole("combobox", { name: "Wybierz typ samolotu:" })
+      screen.getByRole("combobox", { name: "Select the aircraft type:" })
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole("button", { name: "Wygeneruj seat mapę" })
+      screen.getByRole("button", { name: "Generate Seat map" })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "Pokaż totale" })
+      screen.getByRole("button", { name: "Count sections" })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "Wyczyść Seat mapę" })
+      screen.getByRole("button", { name: "Clear Seat map" })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "Wydrukuj Seat Mapę" })
+      screen.getByRole("button", { name: "Print Seat Map" })
     ).toBeInTheDocument();
 
     const select = screen.getByRole("combobox", {
-      name: "Wybierz typ samolotu:",
+      name: "Select the aircraft type:",
     });
     fireEvent.change(select, {
       target: { value: "airbus-a320" },
@@ -62,26 +63,24 @@ describe("ControlPanel component", () => {
     expect(onSelect).toHaveBeenCalled();
     expect(onSelect).toHaveReturnedWith("airbus-a320");
 
-    fireEvent.click(
-      screen.getByRole("button", { name: "Wygeneruj seat mapę" })
-    );
+    fireEvent.click(screen.getByRole("button", { name: "Generate Seat map" }));
 
     expect(onGenerate).toHaveBeenCalled();
 
     // Kliknij przycisk Pokaż totale
-    fireEvent.click(screen.getByRole("button", { name: "Pokaż totale" }));
+    fireEvent.click(screen.getByRole("button", { name: "Count sections" }));
 
     // Sprawdź, czy funkcja onCountTotals jest wywołana
     expect(onCountTotals).toHaveBeenCalled();
 
     // Kliknij przycisk Wyczyść Seat mapę
-    fireEvent.click(screen.getByRole("button", { name: "Wyczyść Seat mapę" }));
+    fireEvent.click(screen.getByRole("button", { name: "Clear Seat map" }));
 
     // Sprawdź, czy funkcja onClearSeatMap jest wywołana
     expect(onClearSeatMap).toHaveBeenCalled();
 
     // Kliknij przycisk Wydrukuj Seat Mapę
-    fireEvent.click(screen.getByRole("button", { name: "Wydrukuj Seat Mapę" }));
+    fireEvent.click(screen.getByRole("button", { name: "Print Seat Map" }));
 
     // Sprawdź, czy funkcja onPrint jest wywołana
     expect(onPrint).toHaveBeenCalled();

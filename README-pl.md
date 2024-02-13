@@ -40,6 +40,7 @@ Aplikacja ma na celu przećwiczenie podliczania sekcji samolotu w warunkach mnie
 
 **Dodatkowe informacje:**
 Aplikacja jest dostępna online pod adresem: https://manual-boarding.netlify.app/
+
 Instrukcja obsługi aplikacji jest dostępna w języku [polskim](https://github.com/TenaciousHare/ManualBoarding/blob/main/README-pl.md) i [angielskim](https://github.com/TenaciousHare/ManualBoarding/blob/main/README.md).
 
 **Uwaga:**

@@ -16,6 +16,11 @@ export const App = () => {
   const [values, setValues] = useSeatMap(selectedPlane || DEFAULT_PLANE);
   const [totals, setTotals] = useCountZones();
   const [code, setCode] = useState(() => generateHexCode());
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   useEffect(() => {
     handleClearSeatMap();
@@ -52,7 +57,12 @@ export const App = () => {
   return (
     <>
       <Wrapper>
-        <Header name={selectedPlane.name} code={code} />
+        <Header
+          name={selectedPlane.name}
+          code={code}
+          isChecked={isChecked}
+          onChange={handleChange}
+        />
         <Wrapper isColumn>
           <SeatMap seatsValues={values} plane={selectedPlane} />
           <SeatMapLabels plane={selectedPlane} />
@@ -64,6 +74,7 @@ export const App = () => {
           onGenerate={handleGenerateSeatMap}
           onSelect={handleSelectedPlane}
           onCountTotals={handleTotals}
+          isChecked={isChecked}
         />
       </Wrapper>
       <Footer />

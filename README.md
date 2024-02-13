@@ -42,6 +42,7 @@ The user can generate another Seat Map or clear all fields by clicking "Clear Se
 
 **Additional Information:**
 The application is available online at: https://manual-boarding.netlify.app/
+
 The user manual is available in [Polish](https://github.com/TenaciousHare/ManualBoarding/blob/main/README-pl.md) and [English](https://github.com/TenaciousHare/ManualBoarding/blob/main/README.md).
 
 **Note:**

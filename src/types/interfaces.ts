@@ -51,11 +51,14 @@ export interface ControlPanelProps {
   onGenerate: () => void;
   onSelect: (event: ChangeEvent<HTMLSelectElement>) => void;
   onCountTotals: () => void;
+  isChecked: boolean;
 }
 
 export interface HeaderProps {
   name: string;
   code: string;
+  isChecked: boolean;
+  onChange: () => void;
 }
 
 export interface RowProps {

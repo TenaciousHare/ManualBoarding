@@ -17,8 +17,8 @@ describe("Gap component", () => {
 
   test("renders all texts correctly", () => {
     render(<Footer />);
-    expect(screen.getByText(/Repozytorium GitHub/i)).toBeInTheDocument();
-    expect(screen.getByText(/Dokumentacja/i)).toBeInTheDocument();
+    expect(screen.getByText(/GitHub/i)).toBeInTheDocument();
+    expect(screen.getByText(/Docs/i)).toBeInTheDocument();
     expect(screen.getByText(/Paweł Zajączkowski 2024/i)).toBeInTheDocument();
   });
 });

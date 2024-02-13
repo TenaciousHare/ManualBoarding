@@ -7,11 +7,14 @@ export const ControlPanel = ({
   onGenerate,
   onSelect,
   onCountTotals,
+  isChecked,
 }: ControlPanelProps) => {
   return (
     <div className={styles.controlPanel}>
       <form>
-        <label htmlFor="plane">Wybierz typ samolotu: </label>
+        <label htmlFor="plane">
+          {isChecked ? "Wybierz typ samolotu: " : "Select the aircraft type: "}
+        </label>
         <select
           name="plane"
           id="plane"
@@ -25,10 +28,18 @@ export const ControlPanel = ({
         </select>
       </form>
       <div className={styles.btnGroup}>
-        <button onClick={onGenerate}>Wygeneruj seat mapę</button>
-        <button onClick={onCountTotals}>Pokaż totale</button>
-        <button onClick={onClearSeatMap}>Wyczyść Seat mapę</button>
-        <button onClick={onPrint}>Wydrukuj Seat Mapę</button>
+        <button onClick={onGenerate}>
+          {isChecked ? "Wygeneruj Seat mapę" : "Generate Seat map"}
+        </button>
+        <button onClick={onCountTotals}>
+          {isChecked ? "Policz sekcje" : "Count sections"}
+        </button>
+        <button onClick={onClearSeatMap}>
+          {isChecked ? "Wyczyść Seat mapę" : "Clear Seat map"}
+        </button>
+        <button onClick={onPrint}>
+          {isChecked ? "Wydrukuj Seat Mapę" : "Print Seat Map"}
+        </button>
       </div>
     </div>
   );
