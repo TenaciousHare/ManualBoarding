@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { SeatMap } from "./components/SeatMap/SeatMap";
 import { Totals } from "./components/Totals/Totals";
 import { ControlPanel } from "./components/ControlPanel/ControlPanel";
@@ -21,10 +21,6 @@ export const App = () => {
   const handleChange = () => {
     setIsChecked(!isChecked);
   };
-
-  useEffect(() => {
-    handleClearSeatMap();
-  }, [selectedPlane]);
 
   const handlePrintSeatMap = () => {
     window.print();

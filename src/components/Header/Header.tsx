@@ -1,5 +1,10 @@
 import styles from "./Header.module.css";
-import { HeaderProps } from "../../types/interfaces";
+export interface HeaderProps {
+  name: string;
+  code: string;
+  isChecked: boolean;
+  onChange: () => void;
+}
 
 export const Header = ({ name, code, isChecked, onChange }: HeaderProps) => {
   return (

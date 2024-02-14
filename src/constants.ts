@@ -1,9 +1,45 @@
-import { Plane } from "./types/interfaces";
+export interface Plane {
+  name: string;
+  type: string;
+  seq: number;
+  rows: number[];
+  evacuationRow: string[];
+  evacuationRowColored: string[];
+  notExistingSeats: string[];
+  notExisitingRows: number;
+  totalRows: string[];
+  totalLabels: { zone: string }[];
+  zones: {
+    zone1Start: number;
+    zone1End: number;
+    zone2Start: number;
+    zone2End: number;
+    zone3Start: number;
+    zone3End: number;
+  };
+  maxPaxPerZone: {
+    zone1: number;
+    zone2: number;
+    zone3: number;
+  };
+}
 
 export const SEATS: string[] = ["A", "B", "C", "D", "E", "F"];
 export const TOTAL_HEADERS: string[] = ["", "", "A", "C", "TTL", "I"];
 
-export const PLANES: Plane[] = [
+export const MAX_INF = 18;
+export const MAX_CHD = 40;
+
+export const DEFAULT_SEAT_VALUE = {
+  value: "",
+  seat: "X",
+  seatType: "",
+  paxType: "A",
+  evacuationRow: false,
+  evacuationRowColored: false,
+};
+
+export const PLANES = [
   {
     name: "Boeing 737-800",
     type: "boeing-737-800",
@@ -361,8 +397,8 @@ export const PLANES: Plane[] = [
       zone3: 60,
     },
   },
-];
+] as const satisfies Plane[];
 
-export const DEFAULT_PLANE: Plane = PLANES.find(
+export const DEFAULT_PLANE = PLANES.find(
   (plane) => plane.type === "boeing-737-800"
 )!;

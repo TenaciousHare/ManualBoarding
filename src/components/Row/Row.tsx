@@ -3,7 +3,13 @@ import styles from "./Row.module.css";
 import { Seat } from "../Seat/Seat";
 import { Gap } from "../Gap/Gap";
 import { SEATS } from "../../constants";
-import { RowProps } from "../../types/interfaces";
+import { SeatValue } from "../../types/interfaces";
+
+export interface RowProps {
+  row: number;
+  index: number;
+  seatsValues: SeatValue[];
+}
 
 export const Row = ({ row, index, seatsValues }: RowProps) => {
   const rowIndex = index * 6;

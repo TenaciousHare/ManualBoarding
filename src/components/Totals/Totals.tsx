@@ -1,6 +1,14 @@
 import styles from "./Totals.module.css";
 import { TOTAL_HEADERS } from "../../constants";
-import { TotalsProps } from "../../types/interfaces";
+import { Zones } from "../../types/interfaces";
+
+export interface TotalsProps {
+  plane: {
+    totalRows: string[];
+    totalLabels: { zone: string }[];
+  };
+  totals: Zones;
+}
 
 export const Totals = ({
   plane: { totalRows, totalLabels },

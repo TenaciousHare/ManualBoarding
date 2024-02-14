@@ -1,5 +1,10 @@
+import React from "react";
 import styles from "./Wrapper.module.css";
-import { WrapperProps } from "../../types/interfaces";
+
+export interface WrapperProps {
+  children: React.ReactNode;
+  isColumn?: boolean;
+}
 
 export const Wrapper = ({ children, isColumn = false }: WrapperProps) => {
   return (

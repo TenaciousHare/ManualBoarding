@@ -1,5 +1,14 @@
+import { ChangeEvent } from "react";
 import styles from "./ControlPanel.module.css";
-import { ControlPanelProps } from "../../types/interfaces";
+
+interface ControlPanelProps {
+  onPrint: () => void;
+  onClearSeatMap: () => void;
+  onGenerate: () => void;
+  onSelect: (event: ChangeEvent<HTMLSelectElement>) => void;
+  onCountTotals: () => void;
+  isChecked: boolean;
+}
 
 export const ControlPanel = ({
   onPrint,

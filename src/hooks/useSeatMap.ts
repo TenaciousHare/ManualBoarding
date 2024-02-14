@@ -1,30 +1,37 @@
 import { useState } from "react";
-import { Plane, SeatValue } from "../types/interfaces";
 import { generateSeqNumbersArray } from "../helpers/generateSeqNumbersArray";
 import { shuffleArray } from "../helpers/shuffleArray";
 import { getSeatType } from "../helpers/getSeatType";
+import { MAX_CHD, MAX_INF, Plane } from "../constants";
+
+export interface SeatValue {
+  value: string;
+  seat: string;
+  seatType: string;
+  paxType: "A" | "C" | "I";
+  evacuationRow: boolean;
+  evacuationRowColored: boolean;
+}
 
 export function useSeatMap(
   plane: Plane
 ): [SeatValue[], (plane: Plane, clear?: boolean) => void] {
   const [seatValues, setSeatValues] = useState<SeatValue[]>([]);
 
-  const MAX_INF = 18;
-  const MAX_CHD = 40;
-
   // funkcja, która tworzy tablicę miejsc w samolocie
   function createSeatMap(rows: number[]): SeatValue[] {
     let seatMap = [];
     let letters = ["A", "B", "C", "D", "E", "F"];
     let length = plane.type !== "airbus-a320" ? rows.length + 1 : rows.length;
+
     for (let i = 1; i <= length; i++) {
       for (let j = 0; j < letters.length; j++) {
         const seatType = getSeatType(letters[j]);
-        let seatObj = {
+        let seatObj: SeatValue = {
           value: "",
           seat: i + letters[j],
           seatType,
-          paxType: "",
+          paxType: "A",
           evacuationRow: false,
           evacuationRowColored: false,
         };
@@ -42,19 +49,19 @@ export function useSeatMap(
     rowToRemove: number
   ): SeatValue[] {
     if (seatsToRemove.length !== 0) {
-      for (let i = 0; i < seatsToRemove.length; i++) {
-        let index = seatMap.findIndex((obj) => obj.seat === seatsToRemove[i]);
+      seatsToRemove.forEach((seatToRemove) => {
+        let index = seatMap.findIndex((obj) => obj.seat === seatToRemove);
         if (index !== -1) {
           let row = parseInt(seatMap[index].seat.slice(0, -1));
           if (row === rowToRemove) {
             seatMap.splice(index, 1);
           } else {
             seatMap[index].seat = "";
-            seatMap[index].paxType = "";
+            seatMap[index].paxType = "A";
             seatMap[index].seatType = "";
           }
         }
-      }
+      });
     }
 
     return seatMap;
@@ -71,18 +78,18 @@ export function useSeatMap(
   ): SeatValue[] {
     let index = 0;
     if (!clear) {
-      for (let i = 0; i < seatMap.length; i++) {
-        if (seatMap[i].seat !== "") {
-          seatMap[i].value = randomValue(String(sequences[index]));
+      seatMap.forEach((seat) => {
+        if (seat.seat !== "") {
+          seat.value = randomValue(String(sequences[index]));
           index++;
         } else {
-          seatMap[i].value = "";
+          seat.value = "";
         }
-      }
+      });
     } else {
-      for (let i = 0; i < seatMap.length; i++) {
-        seatMap[i].value = "";
-      }
+      seatMap.forEach((seat) => {
+        seat.value = "";
+      });
     }
     return seatMap;
   }
@@ -103,20 +110,19 @@ export function useSeatMap(
     evacuationRow: string[],
     evacuationRowColored: string[]
   ): SeatValue[] {
-    for (let i = 0; i < evacuationRow.length; i++) {
-      let index = seatMap.findIndex((obj) => obj.seat === evacuationRow[i]);
+    evacuationRow.forEach((evRow) => {
+      let index = seatMap.findIndex((obj) => obj.seat === evRow);
       if (index !== -1) {
         seatMap[index].evacuationRow = true;
       }
-    }
-    for (let i = 0; i < evacuationRowColored.length; i++) {
-      let index = seatMap.findIndex(
-        (obj) => obj.seat === evacuationRowColored[i]
-      );
+    });
+
+    evacuationRowColored.forEach((evRowCol) => {
+      let index = seatMap.findIndex((obj) => obj.seat === evRowCol);
       if (index !== -1) {
         seatMap[index].evacuationRowColored = true;
       }
-    }
+    });
 
     return seatMap;
   }
@@ -124,19 +130,22 @@ export function useSeatMap(
   function addPaxTypesInfo(seatMap: SeatValue[]): SeatValue[] {
     let childCounter = 0;
     let infantCounter = 0;
-    let paxType = "A";
-    for (let i = 0; i < seatMap.length; i++) {
-      if (seatMap[i].seat !== "") {
+    let paxType: SeatValue["paxType"] = "A";
+
+    seatMap.forEach((seat) => {
+      if (seat.seat !== "") {
         [paxType, childCounter, infantCounter] = randomPaxType(
-          seatMap[i],
+          seat,
           childCounter,
           infantCounter
         );
-        seatMap[i].paxType = paxType;
+        seat.paxType = paxType;
       } else {
-        seatMap[i].paxType = "";
+        seat.paxType = "A";
       }
-    }
+      return seat;
+    });
+
     return seatMap;
   }
 
@@ -144,8 +153,8 @@ export function useSeatMap(
     seat: SeatValue,
     childCounter: number,
     infantCounter: number
-  ): [string, number, number] {
-    let paxType = "A";
+  ): [SeatValue["paxType"], number, number] {
+    let paxType: SeatValue["paxType"] = "A";
     let random = Math.floor(Math.random() * 3);
     if (random === 0 && childCounter < MAX_CHD && !seat.evacuationRow) {
       childCounter++;
@@ -158,9 +167,10 @@ export function useSeatMap(
     ) {
       infantCounter++;
       paxType = "I";
-    } else if (random === 2) {
+    } else {
       paxType = "A";
     }
+
     return [paxType, childCounter, infantCounter];
   }
 

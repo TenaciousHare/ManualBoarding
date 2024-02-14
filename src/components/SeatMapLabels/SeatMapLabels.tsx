@@ -1,5 +1,22 @@
 import styles from "./SeatMapLabels.module.css";
-import { SeatMapLabelsProps } from "../../types/interfaces";
+
+export interface SeatMapLabelsProps {
+  plane: {
+    zones: {
+      zone1Start: number;
+      zone1End: number;
+      zone2Start: number;
+      zone2End: number;
+      zone3Start: number;
+      zone3End: number;
+    };
+    maxPaxPerZone: {
+      zone1: number;
+      zone2: number;
+      zone3: number;
+    };
+  };
+}
 
 export const SeatMapLabels = ({
   plane: {

@@ -1,6 +1,14 @@
 import { useState } from "react";
-
-import { Plane, SeatValue, Zone, Zones } from "../types/interfaces";
+import { SeatValue } from "./useSeatMap";
+import { Plane } from "../constants";
+export interface Zone {
+  adults: number;
+  children: number;
+  infants: number;
+}
+export interface Zones {
+  [key: string]: Zone;
+}
 
 export const useCountZones = (): [
   Zones,
@@ -85,7 +93,7 @@ export const useCountZones = (): [
     }
   }
 
-  const countZone = (paxType: string, zone: Zone): Zone => {
+  const countZone = (paxType: "A" | "C" | "I", zone: Zone): Zone => {
     switch (paxType) {
       case "A":
         zone.adults += 1;
