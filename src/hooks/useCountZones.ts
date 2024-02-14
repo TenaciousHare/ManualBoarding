@@ -68,45 +68,48 @@ export const useCountZones = (): [
       });
     } else if (clear === false) {
       const newTotals = { ...initialTotals };
-      for (let i = 0; i < seatMap.length; i++) {
-        if (seatMap[i].value !== "" && seatMap[i].seat !== "") {
-          newTotals.zone4 = countZone(seatMap[i].paxType, newTotals.zone4);
-          let row = parseInt(seatMap[i].seat.slice(0, -1));
+
+      seatMap.forEach((seat) => {
+        if (seat.value !== "" && seat.seat !== "") {
+          newTotals.zone4 = countZone(seat.paxType, newTotals.zone4);
+          let row = parseInt(seat.seat.slice(0, -1));
           if (row >= plane.zones.zone1Start && row <= plane.zones.zone1End) {
-            newTotals.zone1 = countZone(seatMap[i].paxType, newTotals.zone1);
+            newTotals.zone1 = countZone(seat.paxType, newTotals.zone1);
           } else if (
             row >= plane.zones.zone2Start &&
             row <= plane.zones.zone2End
           ) {
-            newTotals.zone2 = countZone(seatMap[i].paxType, newTotals.zone2);
+            newTotals.zone2 = countZone(seat.paxType, newTotals.zone2);
           } else if (
             row >= plane.zones.zone3Start &&
             row <= plane.zones.zone3End
           ) {
-            newTotals.zone3 = countZone(seatMap[i].paxType, newTotals.zone3);
+            newTotals.zone3 = countZone(seat.paxType, newTotals.zone3);
           }
         } else {
-          continue;
+          return;
         }
-      }
+      });
+
       setTotals({ ...newTotals });
     }
   }
 
   const countZone = (paxType: "A" | "C" | "I", zone: Zone): Zone => {
+    const countedZone = { ...zone };
     switch (paxType) {
       case "A":
-        zone.adults += 1;
+        countedZone.adults += 1;
         break;
       case "C":
-        zone.children += 1;
+        countedZone.children += 1;
         break;
       case "I":
-        zone.adults += 1;
-        zone.infants += 1;
+        countedZone.adults += 1;
+        countedZone.infants += 1;
         break;
     }
-    return zone;
+    return countedZone;
   };
 
   return [totals, countZones];

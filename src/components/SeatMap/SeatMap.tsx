@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SeatMap.module.css";
 import { SEATS } from "../../constants";
-import { SeatValue } from "../../types/interfaces";
+import { SeatValue } from "../../hooks/useSeatMap";
 import { Gap } from "../Gap/Gap";
 import { Row } from "../Row/Row";
 

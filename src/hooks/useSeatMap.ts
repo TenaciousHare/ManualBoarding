@@ -20,40 +20,33 @@ export function useSeatMap(
 
   // funkcja, która tworzy tablicę miejsc w samolocie
   function createSeatMap(rows: number[]): SeatValue[] {
-    let seatMap = [];
     let letters = ["A", "B", "C", "D", "E", "F"];
     let length = plane.type !== "airbus-a320" ? rows.length + 1 : rows.length;
+    let paxType: SeatValue["paxType"] = "A";
 
-    for (let i = 1; i <= length; i++) {
-      for (let j = 0; j < letters.length; j++) {
-        const seatType = getSeatType(letters[j]);
-        let seatObj: SeatValue = {
-          value: "",
-          seat: i + letters[j],
-          seatType,
-          paxType: "A",
-          evacuationRow: false,
-          evacuationRowColored: false,
-        };
-        seatMap.push(seatObj);
-      }
-    }
+    const seatMap: SeatValue[] = Array.from({ length }, (_, i) => {
+      return letters.map((letter) => ({
+        value: "",
+        seat: `${i + 1}${letter}`,
+        seatType: getSeatType(letter),
+        paxType: paxType,
+        evacuationRow: false,
+        evacuationRowColored: false,
+      }));
+    }).flat();
 
     return seatMap;
   }
 
   // funkcja, która usuwa nieistniejące miejsca z tablicy miejsc w samolocie
-  function removeNonExistingSeats(
-    seatMap: SeatValue[],
-    seatsToRemove: string[],
-    rowToRemove: number
-  ): SeatValue[] {
-    if (seatsToRemove.length !== 0) {
-      seatsToRemove.forEach((seatToRemove) => {
+  function removeNonExistingSeats(seatMap: SeatValue[]): SeatValue[] {
+    const { notExisitingRows, notExistingSeats } = plane;
+    if (notExistingSeats.length !== 0) {
+      notExistingSeats.forEach((seatToRemove) => {
         let index = seatMap.findIndex((obj) => obj.seat === seatToRemove);
         if (index !== -1) {
           let row = parseInt(seatMap[index].seat.slice(0, -1));
-          if (row === rowToRemove) {
+          if (row === notExisitingRows) {
             seatMap.splice(index, 1);
           } else {
             seatMap[index].seat = "";
@@ -67,30 +60,26 @@ export function useSeatMap(
     return seatMap;
   }
 
-  const seqArray = generateSeqNumbersArray(plane.seq);
-
-  const shuffledSeqArr: number[] = shuffleArray(seqArray);
-
-  function addValuesToSeats(
-    seatMap: SeatValue[],
-    sequences: number[],
-    clear = false
-  ): SeatValue[] {
+  function addValuesToSeats(seatMap: SeatValue[]): SeatValue[] {
+    const sequences = shuffleArray(generateSeqNumbersArray(plane.seq));
     let index = 0;
-    if (!clear) {
-      seatMap.forEach((seat) => {
-        if (seat.seat !== "") {
-          seat.value = randomValue(String(sequences[index]));
-          index++;
-        } else {
-          seat.value = "";
-        }
-      });
-    } else {
-      seatMap.forEach((seat) => {
+
+    seatMap.forEach((seat) => {
+      if (seat.seat !== "") {
+        seat.value = randomValue(String(sequences[index]));
+        index++;
+      } else {
         seat.value = "";
-      });
-    }
+      }
+    });
+
+    return seatMap;
+  }
+
+  function clearValuesOfAllSeats(seatMap: SeatValue[]): SeatValue[] {
+    seatMap.forEach((seat) => {
+      seat.value = "";
+    });
     return seatMap;
   }
 
@@ -105,11 +94,8 @@ export function useSeatMap(
     }
   }
 
-  function addEvacuationRowsInfo(
-    seatMap: SeatValue[],
-    evacuationRow: string[],
-    evacuationRowColored: string[]
-  ): SeatValue[] {
+  function addEvacuationRowsInfo(seatMap: SeatValue[]): SeatValue[] {
+    const { evacuationRow, evacuationRowColored } = plane;
     evacuationRow.forEach((evRow) => {
       let index = seatMap.findIndex((obj) => obj.seat === evRow);
       if (index !== -1) {
@@ -174,38 +160,28 @@ export function useSeatMap(
     return [paxType, childCounter, infantCounter];
   }
 
+  const compose = <T>(...fns: Array<(arg: T) => T>): ((arg: T) => T) => {
+    return (x: T) =>
+      fns.reduceRight((acc: T, fn: (arg: T) => T): T => fn(acc), x);
+  };
+
   function getRandomSeatMap(plane: Plane, clear = false): void {
+    const initialSeatMap = createSeatMap(plane.rows);
     if (clear) {
-      const clearSeatMap = addEvacuationRowsInfo(
-        addValuesToSeats(
-          removeNonExistingSeats(
-            createSeatMap(plane.rows),
-            plane.notExistingSeats,
-            plane.notExisitingRows
-          ),
-          shuffledSeqArr,
-          true
-        ),
-        plane.evacuationRow,
-        plane.evacuationRowColored
-      );
+      const clearSeatMap = compose(
+        addEvacuationRowsInfo,
+        clearValuesOfAllSeats,
+        removeNonExistingSeats
+      )(initialSeatMap);
 
       setSeatValues([...clearSeatMap]);
     } else {
-      const randomSeatMap = addPaxTypesInfo(
-        addEvacuationRowsInfo(
-          addValuesToSeats(
-            removeNonExistingSeats(
-              createSeatMap(plane.rows),
-              plane.notExistingSeats,
-              plane.notExisitingRows
-            ),
-            shuffledSeqArr
-          ),
-          plane.evacuationRow,
-          plane.evacuationRowColored
-        )
-      );
+      const randomSeatMap = compose(
+        addPaxTypesInfo,
+        addEvacuationRowsInfo,
+        addValuesToSeats,
+        removeNonExistingSeats
+      )(initialSeatMap);
 
       setSeatValues([...randomSeatMap]);
     }

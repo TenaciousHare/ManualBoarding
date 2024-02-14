@@ -1,6 +1,6 @@
 import styles from "./Totals.module.css";
 import { TOTAL_HEADERS } from "../../constants";
-import { Zones } from "../../types/interfaces";
+import { Zones } from "../../hooks/useCountZones";
 
 export interface TotalsProps {
   plane: {

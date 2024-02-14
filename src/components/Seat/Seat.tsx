@@ -1,10 +1,19 @@
 import styles from "./Seat.module.css";
-import { SeatValue } from "../../types/interfaces";
-import { DEFAULT_SEAT_VALUE } from "../../constants";
+import { SeatValue } from "../../hooks/useSeatMap";
+
 export interface SeatProps {
   id: number;
   seatValue?: SeatValue;
 }
+
+export const DEFAULT_SEAT_VALUE: SeatValue = {
+  value: "",
+  seat: "X",
+  seatType: "",
+  paxType: "A",
+  evacuationRow: false,
+  evacuationRowColored: false,
+};
 export const Seat = ({ id, seatValue = DEFAULT_SEAT_VALUE }: SeatProps) => {
   const seatId = String(id);
   const { value, seat, paxType, evacuationRowColored } = seatValue;

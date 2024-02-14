@@ -13,10 +13,10 @@ import { useCountZones } from "./hooks/useCountZones";
 
 export const App = () => {
   const [selectedPlane, setSelectedPlane] = useState(DEFAULT_PLANE);
-  const [values, setValues] = useSeatMap(selectedPlane || DEFAULT_PLANE);
-  const [totals, setTotals] = useCountZones();
   const [code, setCode] = useState(() => generateHexCode());
   const [isChecked, setIsChecked] = useState(false);
+  const [values, setValues] = useSeatMap(selectedPlane);
+  const [totals, setTotals] = useCountZones();
 
   const handleChange = () => {
     setIsChecked(!isChecked);
@@ -41,7 +41,8 @@ export const App = () => {
     const selectedPlane = PLANES.find((plane) => plane.type === target);
     if (selectedPlane) {
       setSelectedPlane(selectedPlane);
-      setValues(selectedPlane);
+      setValues(selectedPlane, true);
+      setTotals(selectedPlane, values, true);
     } else {
       console.error("Nie znaleziono wybranego samolotu.");
     }

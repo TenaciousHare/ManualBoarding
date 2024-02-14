@@ -2,7 +2,8 @@ import "@testing-library/jest-dom";
 import { describe, expect, it } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useCountZones } from "./useCountZones";
-import { Plane, SeatValue } from "../types/interfaces";
+import { Plane } from "../constants";
+import { SeatValue } from "./useSeatMap";
 
 // Przykładowy obiekt plane
 const plane: Plane = {
@@ -68,7 +69,7 @@ const seatMap: SeatValue[] = [
   {
     seat: "2B",
     value: "",
-    paxType: "",
+    paxType: "A",
     seatType: "window",
     evacuationRow: false,
     evacuationRowColored: false,
@@ -76,7 +77,7 @@ const seatMap: SeatValue[] = [
   {
     seat: "2C",
     value: "",
-    paxType: "",
+    paxType: "A",
     seatType: "window",
     evacuationRow: false,
     evacuationRowColored: false,
@@ -116,7 +117,7 @@ const seatMap: SeatValue[] = [
   {
     seat: "12B",
     value: "",
-    paxType: "",
+    paxType: "A",
     seatType: "window",
     evacuationRow: false,
     evacuationRowColored: false,
@@ -124,7 +125,7 @@ const seatMap: SeatValue[] = [
   {
     seat: "12C",
     value: "",
-    paxType: "",
+    paxType: "A",
     seatType: "window",
     evacuationRow: false,
     evacuationRowColored: false,
@@ -164,7 +165,7 @@ const seatMap: SeatValue[] = [
   {
     seat: "22B",
     value: "",
-    paxType: "",
+    paxType: "A",
     seatType: "window",
     evacuationRow: false,
     evacuationRowColored: false,
@@ -172,7 +173,7 @@ const seatMap: SeatValue[] = [
   {
     seat: "22C",
     value: "",
-    paxType: "",
+    paxType: "A",
     seatType: "window",
     evacuationRow: false,
     evacuationRowColored: false,
@@ -212,7 +213,7 @@ const seatMap: SeatValue[] = [
   {
     seat: "32B",
     value: "",
-    paxType: "",
+    paxType: "A",
     seatType: "window",
     evacuationRow: false,
     evacuationRowColored: false,
@@ -220,7 +221,7 @@ const seatMap: SeatValue[] = [
   {
     seat: "32C",
     value: "",
-    paxType: "",
+    paxType: "A",
     seatType: "window",
     evacuationRow: false,
     evacuationRowColored: false,
