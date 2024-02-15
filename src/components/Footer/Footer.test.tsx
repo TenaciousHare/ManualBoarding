@@ -1,21 +1,21 @@
 import "@testing-library/jest-dom";
-import { describe, expect, test } from "vitest";
+import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import { Footer } from "./Footer";
 import styles from "./Footer.module.css";
 
 describe("Gap component", () => {
-  test("renders without crashing", () => {
+  it("renders without crashing", () => {
     render(<Footer />);
   });
 
-  test("has the correct CSS class", () => {
+  it("has the correct CSS class", () => {
     const { container } = render(<Footer />);
     expect(container.firstChild).toHaveClass(`${styles.footer}`);
   });
 
-  test("renders all texts correctly", () => {
+  it("renders all texts correctly", () => {
     render(<Footer />);
     expect(screen.getByText(/GitHub/i)).toBeInTheDocument();
     expect(screen.getByText(/Docs/i)).toBeInTheDocument();

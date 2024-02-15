@@ -1,8 +1,8 @@
 // hexCode.test.js
-import { expect, test } from "vitest";
-import { generateHexCode } from "../generateHexCode";
+import { expect, it } from "vitest";
+import { generateHexCode } from "./generateHexCode";
 
-test("generateHexCode returns a valid hex color", () => {
+it("generateHexCode returns a valid hex color", () => {
   const hex = generateHexCode();
 
   expect(hex[0]).toBe("#");

@@ -1,7 +1,7 @@
-import { expect, test } from "vitest";
+import { expect, it } from "vitest";
 import { generateSeqNumbersArray } from "../generateSeqNumbersArray";
 
-test("generateSeqNumbersArray returns a valid array", () => {
+it("returns a valid array", () => {
   const seqArray = generateSeqNumbersArray(33);
 
   expect(seqArray.length).toBe(33);

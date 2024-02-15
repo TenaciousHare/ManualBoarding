@@ -5,7 +5,7 @@ import { SeatValue } from "../../hooks/useSeatMap/useSeatMap";
 import { Gap } from "../Gap/Gap";
 import { Row } from "../Row/Row";
 
-interface SeatMapProps {
+export interface SeatMapProps {
   seatsValues: SeatValue[];
   plane: {
     rows: number[];

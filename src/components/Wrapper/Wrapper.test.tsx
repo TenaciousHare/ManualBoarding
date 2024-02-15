@@ -1,12 +1,12 @@
 import "@testing-library/jest-dom";
-import { describe, expect, test } from "vitest";
+import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import { Wrapper } from "./Wrapper";
 import styles from "./Wrapper.module.css";
 
 describe("Wrapper component", () => {
-  test("renders children correctly", () => {
+  it("renders children correctly", () => {
     render(
       <Wrapper>
         <p>Test</p>
@@ -15,7 +15,7 @@ describe("Wrapper component", () => {
     expect(screen.getByText("Test")).toBeInTheDocument();
   });
 
-  test("applies column style if isColumn is true", () => {
+  it("applies column style if isColumn is true", () => {
     render(
       <Wrapper isColumn>
         <p>Test</p>
@@ -26,7 +26,7 @@ describe("Wrapper component", () => {
     );
   });
 
-  test("applies wrapper style if isColumn is false", () => {
+  it("applies wrapper style if isColumn is false", () => {
     render(
       <Wrapper isColumn={false}>
         <p>Test</p>

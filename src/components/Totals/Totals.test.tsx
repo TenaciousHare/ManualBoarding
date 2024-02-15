@@ -4,51 +4,12 @@ import { render, screen } from "@testing-library/react";
 
 import { Totals } from "./Totals";
 import { TOTAL_HEADERS } from "../../constants";
-import { Zones } from "../../types/interfaces";
 import styles from "./Totals.module.css";
-
-const plane = {
-  totalRows: ["rows 1-5", "rows 6-28", "rows 29-33", ""],
-  totalLabels: [
-    { zone: "ZONE 1" },
-    { zone: "ZONE 2" },
-    { zone: "ZONE 3" },
-    { zone: "TOTAL" },
-  ],
-};
-const totals: Zones = {
-  zone1: {
-    adults: 2,
-    children: 1,
-    infants: 0,
-  },
-  zone2: {
-    adults: 3,
-    children: 2,
-    infants: 1,
-  },
-  zone3: {
-    adults: 1,
-    children: 0,
-    infants: 0,
-  },
-  zone4: {
-    adults: 6,
-    children: 3,
-    infants: 1,
-  },
-};
-
-const zeroTotals = {
-  zone1: { adults: 0, children: 0, infants: 0 },
-  zone2: { adults: 0, children: 0, infants: 0 },
-  zone3: { adults: 0, children: 0, infants: 0 },
-  zone4: { adults: 0, children: 0, infants: 0 },
-};
+import { planeMock, totalsMock, zeroTotalsMock } from "./Totals_MockData";
 
 describe("Totals component", () => {
   beforeEach(() => {
-    render(<Totals plane={plane} totals={totals} />);
+    render(<Totals plane={planeMock} totals={totalsMock} />);
   });
 
   it("should render the table headers correctly", () => {
@@ -64,31 +25,33 @@ describe("Totals component", () => {
   it("should render the table data correctly", () => {
     const cells = screen.getAllByRole("cell");
 
-    expect(cells).toHaveLength(plane.totalRows.length * TOTAL_HEADERS.length);
+    expect(cells).toHaveLength(
+      planeMock.totalRows.length * TOTAL_HEADERS.length
+    );
 
     cells.forEach((cell, index) => {
       const rowIndex = Math.floor(index / TOTAL_HEADERS.length);
       const zoneKey = `zone${rowIndex + 1}`;
       if (index === 0) {
-        expect(cell.textContent).toMatch(`${plane.totalRows[rowIndex]}`);
+        expect(cell.textContent).toMatch(`${planeMock.totalRows[rowIndex]}`);
       } else if (index === 1) {
-        expect(cell).toHaveTextContent(plane.totalLabels[rowIndex].zone);
+        expect(cell).toHaveTextContent(planeMock.totalLabels[rowIndex].zone);
       } else if (index === 2) {
-        expect(cell).toHaveTextContent(totals[zoneKey].adults.toString());
+        expect(cell).toHaveTextContent(totalsMock[zoneKey].adults.toString());
       } else if (index === 3) {
-        expect(cell).toHaveTextContent(totals[zoneKey].children.toString());
+        expect(cell).toHaveTextContent(totalsMock[zoneKey].children.toString());
       } else if (index === 4) {
         expect(cell).toHaveTextContent(
-          (totals[zoneKey].adults + totals[zoneKey].children).toString()
+          (totalsMock[zoneKey].adults + totalsMock[zoneKey].children).toString()
         );
       } else if (index === 5) {
-        expect(cell).toHaveTextContent(totals[zoneKey].infants.toString());
+        expect(cell).toHaveTextContent(totalsMock[zoneKey].infants.toString());
       }
     });
   });
 
   it("should render empty cells when all totals are zero", () => {
-    render(<Totals plane={plane} totals={zeroTotals} />);
+    render(<Totals plane={planeMock} totals={zeroTotalsMock} />);
 
     const cells = screen.getAllByRole("cell");
 
@@ -98,7 +61,9 @@ describe("Totals component", () => {
   });
 
   it("has the correct CSS class", () => {
-    const { container } = render(<Totals totals={totals} plane={plane} />);
+    const { container } = render(
+      <Totals totals={totalsMock} plane={planeMock} />
+    );
     expect(container.firstChild).toHaveClass(`${styles.totals}`);
   });
 });
