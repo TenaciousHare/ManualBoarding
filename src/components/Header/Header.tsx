@@ -19,6 +19,7 @@ export const Header = ({ name, code, isChecked, onChange }: HeaderProps) => {
           checked={isChecked}
           onChange={onChange}
           className={styles.check}
+          aria-label="Choose language"
         />
         <span>PL</span>
       </div>

@@ -35,7 +35,7 @@ export function useSeatMap(
   function createSeatMap(rows: number[]): SeatValue[] {
     let letters = ["A", "B", "C", "D", "E", "F"];
     let length = plane.type !== "airbus-a320" ? rows.length + 1 : rows.length;
-    let paxType: SeatValue["paxType"] = "A";
+    let paxType: PaxType = "A";
 
     const seatMap: SeatValue[] = Array.from({ length }, (_, i) => {
       return letters.map((letter) => ({

@@ -5,6 +5,7 @@
   height: 100%;
 }
 .seatMapLabel {
+  list-style: none;
   position: absolute;
   width: 100px;
   margin-left: 10px;
