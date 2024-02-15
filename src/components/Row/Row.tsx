@@ -3,7 +3,7 @@ import styles from "./Row.module.css";
 import { Seat } from "../Seat/Seat";
 import { Gap } from "../Gap/Gap";
 import { SEATS } from "../../constants";
-import { SeatValue } from "../../hooks/useSeatMap";
+import { SeatValue } from "../../hooks/useSeatMap/useSeatMap";
 
 export interface RowProps {
   row: number;

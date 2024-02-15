@@ -1,5 +1,5 @@
 import styles from "./Seat.module.css";
-import { SeatValue } from "../../hooks/useSeatMap";
+import { SeatValue } from "../../hooks/useSeatMap/useSeatMap";
 
 export interface SeatProps {
   id: number;

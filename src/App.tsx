@@ -5,17 +5,17 @@ import { ControlPanel } from "./components/ControlPanel/ControlPanel";
 import { SeatMapLabels } from "./components/SeatMapLabels/SeatMapLabels";
 import { Header } from "./components/Header/Header";
 import { Wrapper } from "./components/Wrapper/Wrapper";
-import { useSeatMap } from "./hooks/useSeatMap";
+import { useSeatMap } from "./hooks/useSeatMap/useSeatMap";
 import { PLANES, DEFAULT_PLANE } from "./constants";
 import { generateHexCode } from "./helpers/generateHexCode";
 import { Footer } from "./components/Footer/Footer";
-import { useCountZones } from "./hooks/useCountZones";
+import { useCountZones } from "./hooks/useCountZones/useCountZones";
 
 export const App = () => {
   const [selectedPlane, setSelectedPlane] = useState(DEFAULT_PLANE);
   const [code, setCode] = useState(() => generateHexCode());
   const [isChecked, setIsChecked] = useState(false);
-  const [values, setValues] = useSeatMap(selectedPlane);
+  const [values, setValues, setClear] = useSeatMap(selectedPlane);
   const [totals, setTotals] = useCountZones();
 
   const handleChange = () => {
@@ -26,12 +26,12 @@ export const App = () => {
     window.print();
   };
   const handleClearSeatMap = () => {
-    setValues(selectedPlane, true);
+    setClear();
     setTotals(selectedPlane, values, true);
     setCode("");
   };
   const handleGenerateSeatMap = () => {
-    setValues(selectedPlane);
+    setValues();
     const newCode = generateHexCode();
     setCode(newCode);
   };
@@ -41,7 +41,7 @@ export const App = () => {
     const selectedPlane = PLANES.find((plane) => plane.type === target);
     if (selectedPlane) {
       setSelectedPlane(selectedPlane);
-      setValues(selectedPlane, true);
+      setClear();
       setTotals(selectedPlane, values, true);
     } else {
       console.error("Nie znaleziono wybranego samolotu.");

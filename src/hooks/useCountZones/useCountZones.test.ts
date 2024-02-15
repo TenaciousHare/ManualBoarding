@@ -2,8 +2,8 @@ import "@testing-library/jest-dom";
 import { describe, expect, it } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useCountZones } from "./useCountZones";
-import { Plane } from "../constants";
-import { SeatValue } from "./useSeatMap";
+import { Plane } from "../../constants";
+import { SeatValue } from "../useSeatMap/useSeatMap";
 
 // Przykładowy obiekt plane
 const plane: Plane = {
@@ -261,7 +261,7 @@ describe("useCountZones", () => {
   it("should count zones correctly when provided with plane and seatMap", async () => {
     // Wyrenderuj hook z danymi testowymi
     const { result } = renderHook(() => useCountZones());
-    const [totals, countZones] = result.current;
+    const [, countZones] = result.current;
     // Wywołaj funkcję countZones z danymi testowymi
     act(() => {
       countZones(plane, seatMap);
@@ -269,7 +269,7 @@ describe("useCountZones", () => {
 
     // Sprawdź, czy wartości totals są poprawnie obliczone
 
-    expect(totals).toEqual({
+    expect(result.current[0]).toEqual({
       zone1: {
         adults: 3,
         children: 1,

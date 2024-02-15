@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { SeatValue } from "./useSeatMap";
-import { Plane } from "../constants";
+import { SeatValue } from "../useSeatMap/useSeatMap";
+import { Plane } from "../../constants";
 export interface Zone {
   adults: number;
   children: number;
