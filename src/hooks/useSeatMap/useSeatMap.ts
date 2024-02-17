@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Plane } from "../../constants";
-import { getSeatType } from "./getSeatType";
 import { removeNonExistingSeats } from "./removeNonExistingSeats";
 import { addValuesToSeats } from "./addValuesToSeats";
 import { clearValuesOfAllSeats } from "./clearValuesOfAllSeats";
 import { addEvacuationRowsInfo } from "./addEvacuationRowsInfo";
 import { addPaxTypesInfo } from "./addPaxTypesInfo";
 import { compose } from "./compose";
+import { createSeatMap } from "./createSeatMap";
 
 export type PaxType = "A" | "C" | "I";
 
@@ -31,28 +31,8 @@ export function useSeatMap(
     getClearSeatMap()
   );
 
-  // funkcja, która tworzy tablicę miejsc w samolocie
-  function createSeatMap(rows: number[]): SeatValue[] {
-    let letters = ["A", "B", "C", "D", "E", "F"];
-    let length = plane.type !== "airbus-a320" ? rows.length + 1 : rows.length;
-    let paxType: PaxType = "A";
-
-    const seatMap: SeatValue[] = Array.from({ length }, (_, i) => {
-      return letters.map((letter) => ({
-        value: "",
-        seat: `${i + 1}${letter}`,
-        seatType: getSeatType(letter),
-        paxType: paxType,
-        evacuationRow: false,
-        evacuationRowColored: false,
-      }));
-    }).flat();
-
-    return seatMap;
-  }
-
   function getRandomSeatMap(): SeatValue[] {
-    const initialSeatMap: SeatValue[] = createSeatMap(plane.rows);
+    const initialSeatMap: SeatValue[] = createSeatMap(plane);
     const initialObject = {
       seatMap: initialSeatMap,
       plane,
@@ -68,7 +48,7 @@ export function useSeatMap(
   }
 
   function getClearSeatMap(): SeatValue[] {
-    const initialSeatMap: SeatValue[] = createSeatMap(plane.rows);
+    const initialSeatMap: SeatValue[] = createSeatMap(plane);
     const initialObject = {
       seatMap: initialSeatMap,
       plane,

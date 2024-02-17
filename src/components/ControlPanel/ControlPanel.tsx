@@ -2,7 +2,6 @@ import { ChangeEvent } from "react";
 import styles from "./ControlPanel.module.css";
 
 interface ControlPanelProps {
-  onPrint: () => void;
   onClearSeatMap: () => void;
   onGenerate: () => void;
   onSelect: (event: ChangeEvent<HTMLSelectElement>) => void;
@@ -11,13 +10,16 @@ interface ControlPanelProps {
 }
 
 export const ControlPanel = ({
-  onPrint,
   onClearSeatMap,
   onGenerate,
   onSelect,
   onCountTotals,
   isChecked,
 }: ControlPanelProps) => {
+  const handlePrintSeatMap = () => {
+    window.print();
+  };
+
   return (
     <div className={styles.controlPanel}>
       <form>
@@ -46,7 +48,7 @@ export const ControlPanel = ({
         <button onClick={onClearSeatMap}>
           {isChecked ? "Wyczyść Seat mapę" : "Clear Seat map"}
         </button>
-        <button onClick={onPrint}>
+        <button onClick={handlePrintSeatMap}>
           {isChecked ? "Wydrukuj Seat Mapę" : "Print Seat Map"}
         </button>
       </div>

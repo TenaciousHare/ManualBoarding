@@ -1,5 +1,5 @@
 import { Plane } from "../../constants";
-import { SeatValue } from "../useSeatMap/useSeatMap";
+import { SeatValue } from "../../hooks/useSeatMap/useSeatMap";
 
 // Przykładowy obiekt plane
 export const plane: Plane = {

@@ -5,8 +5,7 @@ import { mockProps } from "./ControlPanel_MockData";
 import { ControlPanel } from "./ControlPanel";
 import styles from "./ControlPanel.module.css";
 
-const { onPrint, onClearSeatMap, onGenerate, onSelect, onCountTotals } =
-  mockProps;
+const { onClearSeatMap, onGenerate, onSelect, onCountTotals } = mockProps;
 
 describe("ControlPanel component", () => {
   it("renders without crashing", () => {
@@ -60,9 +59,5 @@ describe("ControlPanel component", () => {
     fireEvent.click(screen.getByRole("button", { name: "Clear Seat map" }));
 
     expect(onClearSeatMap).toHaveBeenCalled();
-
-    fireEvent.click(screen.getByRole("button", { name: "Print Seat Map" }));
-
-    expect(onPrint).toHaveBeenCalled();
   });
 });

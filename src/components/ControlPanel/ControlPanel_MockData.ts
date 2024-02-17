@@ -1,6 +1,5 @@
 import { vi } from "vitest";
 
-const onPrint = vi.fn();
 const onClearSeatMap = vi.fn();
 const onGenerate = vi.fn();
 const onSelect = vi.fn(() => {
@@ -9,7 +8,6 @@ const onSelect = vi.fn(() => {
 const onCountTotals = vi.fn();
 
 export const mockProps = {
-  onPrint,
   onClearSeatMap,
   onGenerate,
   onSelect,
