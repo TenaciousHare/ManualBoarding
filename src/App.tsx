@@ -5,34 +5,18 @@ import { ControlPanel } from "./components/ControlPanel/ControlPanel";
 import { SeatMapLabels } from "./components/SeatMapLabels/SeatMapLabels";
 import { Header } from "./components/Header/Header";
 import { Wrapper } from "./components/Wrapper/Wrapper";
-import { useSeatMap } from "./hooks/useSeatMap/useSeatMap";
 import { PLANES } from "./constants";
-import { generateHexCode } from "./helpers/generateHexCode";
 import { Footer } from "./components/Footer/Footer";
 import { appReducer, initialState } from "./store/appStore";
 
 export const App = () => {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  const [values, setValues, setClear] = useSeatMap(state.plane);
-
-  const handleClearSeatMap = () => {
-    setClear();
-    dispatch({ type: "clear_totals" });
-    dispatch({ type: "code", code: "" });
-  };
-  const handleGenerateSeatMap = () => {
-    setValues();
-    dispatch({ type: "code", code: generateHexCode() });
-  };
 
   const handleSelectedPlane = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const target = e.currentTarget.value;
     const selectedPlane = PLANES.find((plane) => plane.type === target);
     if (selectedPlane) {
-      dispatch({ type: "select_plane", plane: selectedPlane });
-      setClear();
-
-      dispatch({ type: "clear_totals" });
+      dispatch({ type: "select", plane: selectedPlane });
     } else {
       console.error("Nie znaleziono wybranego samolotu.");
     }
@@ -50,19 +34,19 @@ export const App = () => {
           }
         />
         <Wrapper isColumn>
-          <SeatMap seatsValues={values} plane={state.plane} />
+          <SeatMap seatsValues={state.seatmap} plane={state.plane} />
           <SeatMapLabels plane={state.plane} />
         </Wrapper>
         <Totals plane={state.plane} totals={state.totals} />
         <ControlPanel
-          onClearSeatMap={handleClearSeatMap}
-          onGenerate={handleGenerateSeatMap}
+          onClearSeatMap={() => dispatch({ type: "clear", plane: state.plane })}
+          onGenerate={() => dispatch({ type: "generate", plane: state.plane })}
           onSelect={handleSelectedPlane}
           onCountTotals={() =>
             dispatch({
               type: "count_totals",
               plane: state.plane,
-              values: values,
+              values: state.seatmap,
             })
           }
           isChecked={state.language}

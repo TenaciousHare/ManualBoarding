@@ -1,7 +1,7 @@
 import { shuffleArray } from "./shuffleArray";
 import { generateSeqNumbersArray } from "./generateSeqNumbersArray";
-import { Plane } from "../../constants";
-import { SeatAndPlane, SeatValue } from "./useSeatMap";
+import { Plane } from "../../../constants";
+import { SeatAndPlane, SeatValue } from "../generateSeatMap";
 
 export function addValuesToSeats({
   seatMap,

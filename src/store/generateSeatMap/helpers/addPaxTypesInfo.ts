@@ -1,5 +1,5 @@
-import { MAX_CHD, MAX_INF } from "../../constants";
-import { SeatAndPlane, SeatValue, PaxType } from "./useSeatMap";
+import { MAX_CHD, MAX_INF } from "../../../constants";
+import { SeatAndPlane, SeatValue, PaxType } from "../generateSeatMap";
 
 export function addPaxTypesInfo({
   seatMap,

@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { generateSeqNumbersArray } from "../generateSeqNumbersArray";
+import { generateSeqNumbersArray } from "../helpers/generateSeqNumbersArray";
 
 it("returns a valid array", () => {
   const seqArray = generateSeqNumbersArray(33);

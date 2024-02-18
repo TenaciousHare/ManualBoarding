@@ -1,5 +1,5 @@
 import { Plane } from "../../constants";
-import { PaxType, SeatValue } from "../../hooks/useSeatMap/useSeatMap";
+import { PaxType, SeatValue } from "../generateSeatMap/generateSeatMap";
 
 export interface Zone {
   adults: number;

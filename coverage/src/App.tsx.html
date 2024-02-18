@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.24% </span>
+                <span class="strong">98.27% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>69/74</span>
+                <span class='fraction'>57/58</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.24% </span>
+                <span class="strong">98.27% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>69/74</span>
+                <span class='fraction'>57/58</span>
             </div>
         
             
@@ -121,25 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -152,25 +134,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -218,34 +186,18 @@ import { ControlPanel } from "./components/ControlPanel/ControlPanel";
 import { SeatMapLabels } from "./components/SeatMapLabels/SeatMapLabels";
 import { Header } from "./components/Header/Header";
 import { Wrapper } from "./components/Wrapper/Wrapper";
-import { useSeatMap } from "./hooks/useSeatMap/useSeatMap";
 import { PLANES } from "./constants";
-import { generateHexCode } from "./helpers/generateHexCode";
 import { Footer } from "./components/Footer/Footer";
 import { appReducer, initialState } from "./store/appStore";
 &nbsp;
 export const App = () =&gt; {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  const [values, setValues, setClear] = useSeatMap(state.plane);
-&nbsp;
-  const handleClearSeatMap = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setClear();</span>
-<span class="cstat-no" title="statement not covered" >    dispatch({ type: "clear_totals" });</span>
-<span class="cstat-no" title="statement not covered" >    dispatch({ type: "code", code: "" });</span>
-<span class="cstat-no" title="statement not covered" >  };</span>
-  const handleGenerateSeatMap = () =&gt; {
-    setValues();
-    dispatch({ type: "code", code: generateHexCode() });
-  };
 &nbsp;
   const handleSelectedPlane = (e: React.ChangeEvent&lt;HTMLSelectElement&gt;) =&gt; {
     const target = e.currentTarget.value;
     const selectedPlane = PLANES.find((plane) =&gt; plane.type === target);
     if (selectedPlane) {
-      dispatch({ type: "select_plane", plane: selectedPlane });
-      setClear();
-&nbsp;
-      dispatch({ type: "clear_totals" });
+      dispatch({ type: "select", plane: selectedPlane });
     } else {
       console.error("Nie znaleziono wybranego samolotu.");
     }
@@ -263,19 +215,19 @@ export const App = () =&gt; {
           }
         /&gt;
         &lt;Wrapper isColumn&gt;
-          &lt;SeatMap seatsValues={values} plane={state.plane} /&gt;
+          &lt;SeatMap seatsValues={state.seatmap} plane={state.plane} /&gt;
           &lt;SeatMapLabels plane={state.plane} /&gt;
         &lt;/Wrapper&gt;
         &lt;Totals plane={state.plane} totals={state.totals} /&gt;
         &lt;ControlPanel
-          onClearSeatMap={handleClearSeatMap}
-          onGenerate={handleGenerateSeatMap}
+          onClearSeatMap={<span class="fstat-no" title="function not covered" >() =&gt; dispatch({ type: "clear", plane: state.plane })}</span>
+          onGenerate={() =&gt; dispatch({ type: "generate", plane: state.plane })}
           onSelect={handleSelectedPlane}
           onCountTotals={() =&gt;
             dispatch({
               type: "count_totals",
               plane: state.plane,
-              values: values,
+              values: state.seatmap,
             })
           }
           isChecked={state.language}
@@ -292,7 +244,7 @@ export const App = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-17T21:49:37.279Z
+                at 2024-02-18T19:24:33.842Z
             </div>
         <script src="../prettify.js"></script>
         <script>

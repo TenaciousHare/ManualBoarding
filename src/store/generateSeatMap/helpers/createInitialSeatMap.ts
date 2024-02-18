@@ -1,9 +1,8 @@
-import { Plane } from "../../constants";
+import { Plane } from "../../../constants";
 import { getSeatType } from "./getSeatType";
-import { PaxType, SeatValue } from "./useSeatMap";
+import { PaxType, SeatValue } from "../generateSeatMap";
 
-// funkcja, która tworzy tablicę miejsc w samolocie
-export function createSeatMap(plane: Plane): SeatValue[] {
+export function createInitialSeatMap(plane: Plane): SeatValue[] {
   const rows: number[] = plane.rows;
   let letters = ["A", "B", "C", "D", "E", "F"];
   let length = plane.type !== "airbus-a320" ? rows.length + 1 : rows.length;

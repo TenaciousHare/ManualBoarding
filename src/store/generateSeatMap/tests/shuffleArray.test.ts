@@ -1,6 +1,6 @@
 // shuffleArray.test.js
 import { it, expect } from "vitest";
-import { shuffleArray } from "../shuffleArray";
+import { shuffleArray } from "../helpers/shuffleArray";
 
 it("returns an array of the same length as the original", () => {
   const original = [1, 2, 3, 4, 5];

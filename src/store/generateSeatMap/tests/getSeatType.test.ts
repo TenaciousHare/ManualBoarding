@@ -1,6 +1,6 @@
 // hexCode.test.js
 import { expect, it } from "vitest";
-import { getSeatType } from "../getSeatType";
+import { getSeatType } from "../helpers/getSeatType";
 
 it("returns a valid seatType", () => {
   expect(getSeatType("A")).toBe("window");

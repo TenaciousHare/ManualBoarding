@@ -1,4 +1,4 @@
-import { SeatAndPlane } from "./useSeatMap";
+import { SeatAndPlane } from "../generateSeatMap";
 
 export function clearValuesOfAllSeats({
   seatMap,
