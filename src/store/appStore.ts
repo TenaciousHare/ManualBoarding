@@ -1,5 +1,5 @@
 import { DEFAULT_PLANE, Plane } from "../constants";
-import { generateHexCode } from "../helpers/generateHexCode";
+import { generateHexCode } from "./generateSeatMap/helpers/generateHexCode";
 import { countZones, initialTotals, Zones } from "./countZones/countZones";
 import { clearSeatMap } from "./generateSeatMap/clearSeatMap";
 import { SeatValue, generateSeatMap } from "./generateSeatMap/generateSeatMap";
