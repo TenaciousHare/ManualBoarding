@@ -1,6 +1,5 @@
 import { SeatAndPlane } from "../generateSeatMap";
 
-// funkcja, która usuwa nieistniejące miejsca z tablicy miejsc w samolocie
 export function removeNonExistingSeats({
   seatMap,
   plane,

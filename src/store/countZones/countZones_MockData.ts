@@ -1,7 +1,6 @@
 import { Plane } from "../../constants";
-import { SeatValue } from "../../hooks/useSeatMap/useSeatMap";
+import { SeatValue } from "../generateSeatMap/generateSeatMap";
 
-// Przykładowy obiekt plane
 export const plane: Plane = {
   name: "test",
   type: "test",
@@ -28,7 +27,6 @@ export const plane: Plane = {
   },
 };
 
-// Przykładowa tablica seatMap
 export const seatMap: SeatValue[] = [
   {
     seat: "1A",

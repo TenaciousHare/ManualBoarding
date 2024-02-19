@@ -1,4 +1,4 @@
-import { Zones } from "../../hooks/useCountZones/useCountZones";
+import { Zones } from "../../store/countZones/countZones";
 
 export const planeMock = {
   totalRows: ["rows 1-5", "rows 6-28", "rows 29-33", ""],

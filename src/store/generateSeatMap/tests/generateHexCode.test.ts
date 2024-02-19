@@ -1,4 +1,3 @@
-// hexCode.test.js
 import { expect, it } from "vitest";
 import { generateHexCode } from "../helpers/generateHexCode";
 

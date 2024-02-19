@@ -1,4 +1,3 @@
-// shuffleArray.test.js
 import { it, expect } from "vitest";
 import { shuffleArray } from "../helpers/shuffleArray";
 

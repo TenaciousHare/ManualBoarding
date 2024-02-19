@@ -1,4 +1,3 @@
-// hexCode.test.js
 import { expect, it } from "vitest";
 import { getSeatType } from "../helpers/getSeatType";
 

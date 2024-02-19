@@ -1,4 +1,4 @@
-import { SeatValue } from "../../hooks/useSeatMap/useSeatMap";
+import { SeatValue } from "../../store/generateSeatMap/generateSeatMap";
 
 const defaultSeatValue: SeatValue = {
   value: "64",

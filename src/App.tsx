@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import { useReducer, ChangeEvent } from "react";
 import { SeatMap } from "./components/SeatMap/SeatMap";
 import { Totals } from "./components/Totals/Totals";
 import { ControlPanel } from "./components/ControlPanel/ControlPanel";
@@ -12,7 +12,7 @@ import { appReducer, initialState } from "./store/appStore";
 export const App = () => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  const handleSelectedPlane = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectedPlane = (e: ChangeEvent<HTMLSelectElement>) => {
     const target = e.currentTarget.value;
     const selectedPlane = PLANES.find((plane) => plane.type === target);
     if (selectedPlane) {
