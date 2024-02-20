@@ -1,3 +1,5 @@
+import { SeatValue } from "./store/generateSeatMap/generateSeatMap";
+
 export interface Plane {
   name: string;
   type: string;
@@ -29,6 +31,15 @@ export const TOTAL_HEADERS: string[] = ["", "", "A", "C", "TTL", "I"];
 
 export const MAX_INF = 18;
 export const MAX_CHD = 40;
+
+export const DEFAULT_SEAT_VALUE: SeatValue = {
+  value: "",
+  seat: "X",
+  seatType: "",
+  paxType: "A",
+  evacuationRow: false,
+  evacuationRowColored: false,
+};
 
 export const PLANES = [
   {

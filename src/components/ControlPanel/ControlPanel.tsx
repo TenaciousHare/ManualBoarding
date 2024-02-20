@@ -39,16 +39,16 @@ export const ControlPanel = ({
         </select>
       </form>
       <div className={styles.btnGroup}>
-        <button onClick={onGenerate}>
+        <button id="generate" onClick={onGenerate}>
           {isChecked ? "Wygeneruj Seat mapę" : "Generate Seat map"}
         </button>
-        <button onClick={onCountTotals}>
+        <button id="count" onClick={onCountTotals}>
           {isChecked ? "Policz sekcje" : "Count sections"}
         </button>
-        <button onClick={onClearSeatMap}>
+        <button id="clear" onClick={onClearSeatMap}>
           {isChecked ? "Wyczyść Seat mapę" : "Clear Seat map"}
         </button>
-        <button onClick={handlePrintSeatMap}>
+        <button id="print" onClick={handlePrintSeatMap}>
           {isChecked ? "Wydrukuj Seat Mapę" : "Print Seat Map"}
         </button>
       </div>

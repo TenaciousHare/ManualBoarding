@@ -15,6 +15,7 @@ export const Header = ({ name, code, isChecked, onChange }: HeaderProps) => {
       <div className={styles.language}>
         <span>EN</span>
         <input
+          id="language"
           type="checkbox"
           checked={isChecked}
           onChange={onChange}
