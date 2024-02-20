@@ -4,7 +4,7 @@ import { DEFAULT_SEAT_VALUE } from "../../constants";
 
 export interface SeatProps {
   id: number;
-  seatValue?: SeatValue;
+  seatValue: SeatValue;
 }
 
 export const Seat = ({ id, seatValue = DEFAULT_SEAT_VALUE }: SeatProps) => {
@@ -15,7 +15,7 @@ export const Seat = ({ id, seatValue = DEFAULT_SEAT_VALUE }: SeatProps) => {
   const isChild = paxType === "C";
   const isInfant = paxType === "I";
   const isCrossed = value === "X";
-  const isOccupied = !(value === "") || isChild || isInfant || isCrossed;
+  const isOccupied = value !== "";
 
   let className = isExisting ? styles.empty : styles.seat;
   className += isEmergency ? ` ${styles.emergency}` : "";
