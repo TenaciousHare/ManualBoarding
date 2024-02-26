@@ -22,6 +22,7 @@ export const ControlPanel = ({
 
   return (
     <div className={styles.controlPanel}>
+      /* ToDo - Może komponent select i opcje zmapowane z tablicy? */
       <form>
         <label htmlFor="plane">
           {isChecked ? "Wybierz typ samolotu: " : "Select the aircraft type: "}
@@ -38,6 +39,8 @@ export const ControlPanel = ({
           <option value="airbus-a320">Airbus A320 - Lauda</option>
         </select>
       </form>
+      /* ToDo - stworzyć tablicę z danymi o buttonach i zmapować później -
+      komponent może komponent Button ? */
       <div className={styles.btnGroup}>
         <button id="generate" onClick={onGenerate}>
           {isChecked ? "Wygeneruj Seat mapę" : "Generate Seat map"}

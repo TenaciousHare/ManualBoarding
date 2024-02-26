@@ -36,7 +36,11 @@ Aplikacja ma na celu przećwiczenie podliczania sekcji samolotu w warunkach mnie
 
 ## 4. Użyte technologie
 
-[![Technologies used](https://skillicons.dev/icons?i=react,typescript,css,vite,vitest)](https://skillicons.dev)
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,typescript,css,vite,vitest" />
+  </a>
+</p>
 
 **Dodatkowe informacje:**
 Aplikacja jest dostępna online pod adresem: https://manual-boarding.netlify.app/

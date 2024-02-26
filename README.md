@@ -38,7 +38,11 @@ The user can generate another Seat Map or clear all fields by clicking "Clear Se
 
 ## 4. Technologies Used
 
-[![Technologies used](https://skillicons.dev/icons?i=react,typescript,css,vite,vitest)](https://skillicons.dev)
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,typescript,css,vite,vitest" />
+  </a>
+</p>
 
 **Additional Information:**
 The application is available online at: https://manual-boarding.netlify.app/
