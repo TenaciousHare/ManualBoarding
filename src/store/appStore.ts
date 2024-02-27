@@ -4,7 +4,7 @@ import { countZones, initialTotals, Zones } from "./countZones/countZones";
 import { clearSeatMap } from "./generateSeatMap/clearSeatMap";
 import { SeatValue, generateSeatMap } from "./generateSeatMap/generateSeatMap";
 
-interface State {
+export interface State {
   code: string;
   language: boolean;
   plane: Plane;
@@ -20,11 +20,12 @@ export const initialState: State = {
   seatmap: clearSeatMap(DEFAULT_PLANE),
 };
 
-type AppAction =
+export type AppAction =
   | { type: "language"; language: boolean }
   | { type: "generate"; plane: Plane }
   | { type: "clear"; plane: Plane }
   | { type: "select"; plane: Plane }
+  | { type: "print" }
   | {
       type: "count_totals";
       plane: Plane;
@@ -58,6 +59,9 @@ export function appReducer(state: State, action: AppAction): State {
       };
     case "count_totals":
       return { ...state, totals: countZones(action.plane, action.values) };
+    case "print":
+      window.print();
+      return state;
     default:
       return state;
   }

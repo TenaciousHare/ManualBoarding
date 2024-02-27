@@ -1,36 +1,25 @@
-import { ChangeEvent } from "react";
+import { useContext } from "react";
+import { BUTTONS_VALUES } from "../../constants";
+import { Button } from "../Button/Button";
 import styles from "./ControlPanel.module.css";
+import { SeatMapContext } from "../../context/SeatMapContext";
 
-interface ControlPanelProps {
-  onClearSeatMap: () => void;
-  onGenerate: () => void;
-  onSelect: (event: ChangeEvent<HTMLSelectElement>) => void;
-  onCountTotals: () => void;
-  isChecked: boolean;
-}
-
-export const ControlPanel = ({
-  onClearSeatMap,
-  onGenerate,
-  onSelect,
-  onCountTotals,
-  isChecked,
-}: ControlPanelProps) => {
-  const handlePrintSeatMap = () => {
-    window.print();
-  };
+export const ControlPanel = () => {
+  const {
+    state: { language },
+    handleSelectedPlane,
+  } = useContext(SeatMapContext)!;
 
   return (
     <div className={styles.controlPanel}>
-      /* ToDo - Może komponent select i opcje zmapowane z tablicy? */
       <form>
         <label htmlFor="plane">
-          {isChecked ? "Wybierz typ samolotu: " : "Select the aircraft type: "}
+          {language ? "Wybierz typ samolotu: " : "Select the aircraft type: "}
         </label>
         <select
           name="plane"
           id="plane"
-          onChange={onSelect}
+          onChange={handleSelectedPlane}
           defaultValue="boeing-737-800"
         >
           <option value="boeing-737-800">Boeing 737-800</option>
@@ -39,21 +28,17 @@ export const ControlPanel = ({
           <option value="airbus-a320">Airbus A320 - Lauda</option>
         </select>
       </form>
-      /* ToDo - stworzyć tablicę z danymi o buttonach i zmapować później -
-      komponent może komponent Button ? */
+
       <div className={styles.btnGroup}>
-        <button id="generate" onClick={onGenerate}>
-          {isChecked ? "Wygeneruj Seat mapę" : "Generate Seat map"}
-        </button>
-        <button id="count" onClick={onCountTotals}>
-          {isChecked ? "Policz sekcje" : "Count sections"}
-        </button>
-        <button id="clear" onClick={onClearSeatMap}>
-          {isChecked ? "Wyczyść Seat mapę" : "Clear Seat map"}
-        </button>
-        <button id="print" onClick={handlePrintSeatMap}>
-          {isChecked ? "Wydrukuj Seat Mapę" : "Print Seat Map"}
-        </button>
+        {BUTTONS_VALUES.map((button) => {
+          return (
+            <Button
+              key={button.name}
+              name={button.name}
+              language={language ? button.pl : button.en}
+            />
+          );
+        })}
       </div>
     </div>
   );

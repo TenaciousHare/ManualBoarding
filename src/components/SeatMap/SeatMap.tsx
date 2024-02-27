@@ -1,22 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./SeatMap.module.css";
 import { SEATS } from "../../constants";
-import { SeatValue } from "../../store/generateSeatMap/generateSeatMap";
 import { Gap } from "../Gap/Gap";
 import { Row } from "../Row/Row";
+import { SeatMapContext } from "../../context/SeatMapContext";
 
-export interface SeatMapProps {
-  seatsValues: SeatValue[];
-  plane: {
-    rows: number[];
-    zones: {
-      zone1End: number;
-      zone2End: number;
-    };
-  };
-}
-
-export const SeatMap = ({ seatsValues, plane }: SeatMapProps) => {
+export const SeatMap = () => {
+  const {
+    state: { plane, seatmap },
+  } = useContext(SeatMapContext)!;
   const ROWS = plane.rows;
   const GAP1 = plane.zones.zone1End;
   const GAP2 = plane.zones.zone2End;
@@ -37,7 +29,7 @@ export const SeatMap = ({ seatsValues, plane }: SeatMapProps) => {
       <tbody>
         {ROWS.map((row, index) => (
           <React.Fragment key={row}>
-            <Row row={row} index={index} seatsValues={seatsValues} />
+            <Row row={row} index={index} seatsValues={seatmap} />
             {(row === GAP1 || row === GAP2) && (
               <tr>
                 <Gap />

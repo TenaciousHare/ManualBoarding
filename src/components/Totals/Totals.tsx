@@ -1,19 +1,15 @@
 import styles from "./Totals.module.css";
 import { TOTAL_HEADERS } from "../../constants";
-import { Zones } from "../../store/countZones/countZones";
+import { useContext } from "react";
+import { SeatMapContext } from "../../context/SeatMapContext";
 
-export interface TotalsProps {
-  plane: {
-    totalRows: string[];
-    totalLabels: { zone: string }[];
-  };
-  totals: Zones;
-}
-
-export const Totals = ({
-  plane: { totalRows, totalLabels },
-  totals,
-}: TotalsProps) => {
+export const Totals = () => {
+  const {
+    state: {
+      plane: { totalLabels, totalRows },
+      totals,
+    },
+  } = useContext(SeatMapContext)!;
   const emptyCell =
     totals.zone4.adults === 0 &&
     totals.zone4.children === 0 &&

@@ -404,3 +404,26 @@ export const PLANES = [
 export const DEFAULT_PLANE = PLANES.find(
   (plane) => plane.type === "boeing-737-800"
 )!;
+
+export const BUTTONS_VALUES = [
+  {
+    name: "generate seat map",
+    en: "Generate Seat Map",
+    pl: "Wygeneruj Seat Mapę",
+  },
+  {
+    name: "count sections",
+    en: "Count sections",
+    pl: "Policz sekcje",
+  },
+  {
+    name: "clear seat map",
+    en: "Clear Seat Map",
+    pl: "Wyczyść Seat Mapę",
+  },
+  {
+    name: "print seat map",
+    en: "Print Seat Map",
+    pl: "Wydrukuj Seat Mapę",
+  },
+];

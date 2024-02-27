@@ -1,12 +1,16 @@
+import { useContext } from "react";
 import styles from "./Header.module.css";
-export interface HeaderProps {
-  name: string;
-  code: string;
-  isChecked: boolean;
-  onChange: () => void;
-}
+import { SeatMapContext } from "../../context/SeatMapContext";
 
-export const Header = ({ name, code, isChecked, onChange }: HeaderProps) => {
+export const Header = () => {
+  const {
+    state: {
+      plane: { name },
+      code,
+      language,
+    },
+    dispatch,
+  } = useContext(SeatMapContext)!;
   return (
     <>
       <div data-testid="code" className={styles.code}>
@@ -17,14 +21,14 @@ export const Header = ({ name, code, isChecked, onChange }: HeaderProps) => {
         <input
           id="language"
           type="checkbox"
-          checked={isChecked}
-          onChange={onChange}
+          checked={language}
+          onChange={() => dispatch({ type: "language", language: language })}
           className={styles.check}
           aria-label="Choose language"
         />
         <span>PL</span>
       </div>
-      {isChecked ? (
+      {language ? (
         <h1>{`Seat mapa - ${name}`}</h1>
       ) : (
         <h1>{`Seat map - ${name}`}</h1>

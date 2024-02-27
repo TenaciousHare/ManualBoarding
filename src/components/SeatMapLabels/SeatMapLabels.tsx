@@ -1,29 +1,23 @@
+import { useContext } from "react";
+import { SeatMapContext } from "../../context/SeatMapContext";
 import styles from "./SeatMapLabels.module.css";
 
-export interface SeatMapLabelsProps {
-  plane: {
-    zones: {
-      zone1Start: number;
-      zone1End: number;
-      zone2Start: number;
-      zone2End: number;
-      zone3Start: number;
-      zone3End: number;
-    };
-    maxPaxPerZone: {
-      zone1: number;
-      zone2: number;
-      zone3: number;
-    };
-  };
-}
-
-export const SeatMapLabels = ({
-  plane: {
-    zones: { zone1Start, zone1End, zone2Start, zone2End, zone3Start, zone3End },
-    maxPaxPerZone: { zone1, zone2, zone3 },
-  },
-}: SeatMapLabelsProps) => {
+export const SeatMapLabels = () => {
+  const {
+    state: {
+      plane: {
+        zones: {
+          zone1Start,
+          zone1End,
+          zone2Start,
+          zone2End,
+          zone3Start,
+          zone3End,
+        },
+        maxPaxPerZone: { zone1, zone2, zone3 },
+      },
+    },
+  } = useContext(SeatMapContext)!;
   return (
     <ul data-testid="seat-map-labels" className={styles.seatMapLabels}>
       <li role="listitem" className={styles.seatMapLabel}>
