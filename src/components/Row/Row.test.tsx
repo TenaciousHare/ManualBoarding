@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 
 import { Row } from "./Row";
 import styles from "./Row.module.css";
-import { mockProps } from "./Row_MockData";
+import { mockProps } from "../../mockData/Row_MockData";
 
 describe("Row component", () => {
   it("renders without crashing", () => {

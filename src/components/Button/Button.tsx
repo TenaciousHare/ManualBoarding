@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SeatMapContext } from "../../context/SeatMapContext";
-
+import styles from "./Button.module.css";
 interface ButtonProps {
   language: string;
   name: string;
@@ -16,12 +16,15 @@ export function Button({ language, name }: ButtonProps) {
     dispatch,
   } = useContext(SeatMapContext)!;
   const onClickMapping: OnClickMapping = {
-    "generate seat map": () => dispatch({ type: "generate", plane }),
-    "clear seat map": () => dispatch({ type: "clear", plane }),
-    "print seat map": () => dispatch({ type: "print" }),
-    "count sections": () =>
-      dispatch({ type: "count_totals", plane, values: seatmap }),
+    generate: () => dispatch({ type: "generate", plane }),
+    clear: () => dispatch({ type: "clear", plane }),
+    print: () => dispatch({ type: "print" }),
+    count: () => dispatch({ type: "count_totals", plane, values: seatmap }),
   };
 
-  return <button onClick={onClickMapping[name]}>{language}</button>;
+  return (
+    <button id={name} className={styles.btn} onClick={onClickMapping[name]}>
+      {language}
+    </button>
+  );
 }

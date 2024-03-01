@@ -1,0 +1,8 @@
+.btn {
+  background-color: lightblue;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+}

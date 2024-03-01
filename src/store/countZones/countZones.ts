@@ -40,11 +40,11 @@ export function countZones(plane: Plane, seatMap: SeatValue[]): Zones {
     if (seat.value !== "" && seat.seat !== "") {
       newTotals.zone4 = countZone(seat.paxType, newTotals.zone4);
       let row = parseInt(seat.seat.slice(0, -1));
-      if (row >= plane.zones.zone1Start && row <= plane.zones.zone1End) {
+      if (row >= plane.zones[0] && row <= plane.zones[1]) {
         newTotals.zone1 = countZone(seat.paxType, newTotals.zone1);
-      } else if (row >= plane.zones.zone2Start && row <= plane.zones.zone2End) {
+      } else if (row >= plane.zones[2] && row <= plane.zones[3]) {
         newTotals.zone2 = countZone(seat.paxType, newTotals.zone2);
-      } else if (row >= plane.zones.zone3Start && row <= plane.zones.zone3End) {
+      } else if (row >= plane.zones[4] && row <= plane.zones[5]) {
         newTotals.zone3 = countZone(seat.paxType, newTotals.zone3);
       }
     } else {

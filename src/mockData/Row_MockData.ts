@@ -1,4 +1,4 @@
-import { PaxType } from "./../../store/generateSeatMap/generateSeatMap";
+import { PaxType } from "../store/generateSeatMap/generateSeatMap";
 
 const paxType: PaxType = "A";
 

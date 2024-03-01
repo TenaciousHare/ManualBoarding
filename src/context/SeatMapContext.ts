@@ -1,8 +1,8 @@
-import { ChangeEvent, createContext } from "react";
+import { ChangeEvent, createContext, Dispatch } from "react";
 import { State, AppAction } from "../store/appStore";
 
 export const SeatMapContext = createContext<{
   state: State;
-  dispatch: React.Dispatch<AppAction>;
+  dispatch: Dispatch<AppAction>;
   handleSelectedPlane: (e: ChangeEvent<HTMLSelectElement>) => void;
 } | null>(null);

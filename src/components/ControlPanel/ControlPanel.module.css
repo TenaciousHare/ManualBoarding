@@ -6,22 +6,6 @@
   font-weight: bold;
 }
 
-.btnGroup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-button,
-select {
-  background-color: lightblue;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 10px;
-}
-
 @media print {
   .controlPanel {
     display: none;

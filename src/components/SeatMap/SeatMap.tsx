@@ -10,8 +10,8 @@ export const SeatMap = () => {
     state: { plane, seatmap },
   } = useContext(SeatMapContext)!;
   const ROWS = plane.rows;
-  const GAP1 = plane.zones.zone1End;
-  const GAP2 = plane.zones.zone2End;
+  const GAP1 = plane.zones[1];
+  const GAP2 = plane.zones[3];
   return (
     <table data-testid="seat-map" className={styles.seatMap}>
       <thead>

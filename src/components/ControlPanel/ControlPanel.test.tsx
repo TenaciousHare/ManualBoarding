@@ -1,24 +1,64 @@
 import "@testing-library/jest-dom";
 import { describe, expect, it } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { mockProps } from "./ControlPanel_MockData";
+
 import { ControlPanel } from "./ControlPanel";
 import styles from "./ControlPanel.module.css";
-
-const { onClearSeatMap, onGenerate, onSelect, onCountTotals } = mockProps;
+import { SeatMapContext } from "../../context/SeatMapContext";
+import { mockValue } from "../../mockData/mockData";
+import { ButtonGroup } from "../ButtonGroup/ButtonGroup";
+import { SelectPlane } from "../SelectPlane/SelectPlane";
 
 describe("ControlPanel component", () => {
   it("renders without crashing", () => {
-    render(<ControlPanel {...mockProps} />);
+    render(
+      <ControlPanel>
+        <SelectPlane />
+        <ButtonGroup />
+      </ControlPanel>,
+      {
+        wrapper: ({ children }) => (
+          <SeatMapContext.Provider value={mockValue}>
+            {children}
+          </SeatMapContext.Provider>
+        ),
+      }
+    );
   });
 
   it("has the correct CSS class", () => {
-    const { container } = render(<ControlPanel {...mockProps} />);
+    const { container } = render(
+      <ControlPanel>
+        <SelectPlane />
+        <ButtonGroup />
+      </ControlPanel>,
+      {
+        wrapper: ({ children }) => (
+          <SeatMapContext.Provider value={mockValue}>
+            {children}
+          </SeatMapContext.Provider>
+        ),
+      }
+    );
     expect(container.firstChild).toHaveClass(`${styles.controlPanel}`);
   });
 
   it("renders correctly and handles user interactions", () => {
-    render(<ControlPanel {...mockProps} />);
+    render(
+      <ControlPanel>
+        <SelectPlane />
+        <ButtonGroup />
+      </ControlPanel>,
+      {
+        wrapper: ({ children }) => (
+          <SeatMapContext.Provider value={mockValue}>
+            {children}
+          </SeatMapContext.Provider>
+        ),
+      }
+    );
+
+    const { handleSelectedPlane, dispatch } = mockValue;
 
     expect(screen.getByText("Select the aircraft type:")).toBeInTheDocument();
     expect(
@@ -26,13 +66,13 @@ describe("ControlPanel component", () => {
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole("button", { name: "Generate Seat map" })
+      screen.getByRole("button", { name: "Generate Seat Map" })
     ).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: "Count sections" })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "Clear Seat map" })
+      screen.getByRole("button", { name: "Clear Seat Map" })
     ).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: "Print Seat Map" })
@@ -41,23 +81,23 @@ describe("ControlPanel component", () => {
     const select = screen.getByRole("combobox", {
       name: "Select the aircraft type:",
     });
+
     fireEvent.change(select, {
       target: { value: "airbus-a320" },
     });
+    expect(handleSelectedPlane).toHaveBeenCalled();
+    expect(handleSelectedPlane).toHaveReturnedWith("airbus-a320");
 
-    expect(onSelect).toHaveBeenCalled();
-    expect(onSelect).toHaveReturnedWith("airbus-a320");
+    fireEvent.click(screen.getByRole("button", { name: "Generate Seat Map" }));
 
-    fireEvent.click(screen.getByRole("button", { name: "Generate Seat map" }));
-
-    expect(onGenerate).toHaveBeenCalled();
+    expect(dispatch).toHaveBeenCalled();
 
     fireEvent.click(screen.getByRole("button", { name: "Count sections" }));
 
-    expect(onCountTotals).toHaveBeenCalled();
+    expect(dispatch).toHaveBeenCalled();
 
-    fireEvent.click(screen.getByRole("button", { name: "Clear Seat map" }));
+    fireEvent.click(screen.getByRole("button", { name: "Clear Seat Map" }));
 
-    expect(onClearSeatMap).toHaveBeenCalled();
+    expect(dispatch).toHaveBeenCalled();
   });
 });

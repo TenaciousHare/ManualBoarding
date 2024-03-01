@@ -1,11 +1,9 @@
-import { ChangeEvent, useReducer } from "react";
+import { ChangeEvent, useReducer, ReactNode } from "react";
 import { appReducer, initialState } from "../../store/appStore";
 import { SeatMapContext } from "../../context/SeatMapContext";
 import { PLANES } from "../../constants";
 
-export const SeatMapProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const SeatMapProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
   const handleSelectedPlane = (e: ChangeEvent<HTMLSelectElement>) => {

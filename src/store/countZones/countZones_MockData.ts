@@ -12,19 +12,8 @@ export const plane: Plane = {
   notExisitingRows: 13,
   totalRows: ["test"],
   totalLabels: [{ zone: "2" }],
-  zones: {
-    zone1Start: 1,
-    zone1End: 10,
-    zone2Start: 11,
-    zone2End: 20,
-    zone3Start: 21,
-    zone3End: 30,
-  },
-  maxPaxPerZone: {
-    zone1: 30,
-    zone2: 120,
-    zone3: 30,
-  },
+  zones: [1, 10, 11, 20, 21, 30],
+  maxPaxPerZone: [30, 20, 30],
 };
 
 export const seatMap: SeatValue[] = [

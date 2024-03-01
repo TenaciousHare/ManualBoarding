@@ -4,25 +4,3 @@
   top: 0;
   height: 100%;
 }
-.seatMapLabel {
-  list-style: none;
-  position: absolute;
-  width: 100px;
-  margin-left: 10px;
-}
-.seatMapLabel:nth-of-type(1) {
-  top: 10%;
-  left: 0;
-}
-.seatMapLabel:nth-of-type(2) {
-  top: 50%;
-  left: 0;
-}
-.seatMapLabel:nth-of-type(3) {
-  top: 90%;
-  left: 0;
-}
-.seatMapLabel p,
-strong {
-  font-size: 1.2rem;
-}

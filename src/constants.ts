@@ -11,19 +11,8 @@ export interface Plane {
   notExisitingRows: number;
   totalRows: string[];
   totalLabels: { zone: string }[];
-  zones: {
-    zone1Start: number;
-    zone1End: number;
-    zone2Start: number;
-    zone2End: number;
-    zone3Start: number;
-    zone3End: number;
-  };
-  maxPaxPerZone: {
-    zone1: number;
-    zone2: number;
-    zone3: number;
-  };
+  zones: number[];
+  maxPaxPerZone: number[];
 }
 
 export const SEATS: string[] = ["A", "B", "C", "D", "E", "F"];
@@ -118,19 +107,8 @@ export const PLANES = [
       { zone: "ZONE 3" },
       { zone: "TOTAL" },
     ],
-    zones: {
-      zone1Start: 1,
-      zone1End: 5,
-      zone2Start: 6,
-      zone2End: 28,
-      zone3Start: 29,
-      zone3End: 33,
-    },
-    maxPaxPerZone: {
-      zone1: 27,
-      zone2: 132,
-      zone3: 30,
-    },
+    zones: [1, 5, 6, 28, 29, 33],
+    maxPaxPerZone: [27, 132, 30],
   },
   {
     name: "Boeing 737-700",
@@ -191,19 +169,8 @@ export const PLANES = [
       { zone: "ZONE 3" },
       { zone: "TOTAL" },
     ],
-    zones: {
-      zone1Start: 1,
-      zone1End: 4,
-      zone2Start: 5,
-      zone2End: 21,
-      zone3Start: 22,
-      zone3End: 26,
-    },
-    maxPaxPerZone: {
-      zone1: 24,
-      zone2: 94,
-      zone3: 30,
-    },
+    zones: [1, 4, 5, 21, 22, 26],
+    maxPaxPerZone: [24, 94, 30],
   },
   {
     name: "Boeing 737-8200",
@@ -314,19 +281,8 @@ export const PLANES = [
       { zone: "ZONE 3" },
       { zone: "TOTAL" },
     ],
-    zones: {
-      zone1Start: 1,
-      zone1End: 6,
-      zone2Start: 7,
-      zone2End: 29,
-      zone3Start: 30,
-      zone3End: 35,
-    },
-    maxPaxPerZone: {
-      zone1: 32,
-      zone2: 129,
-      zone3: 36,
-    },
+    zones: [1, 6, 7, 29, 30, 35],
+    maxPaxPerZone: [32, 129, 36],
   },
   {
     name: "Airbus A320",
@@ -385,19 +341,8 @@ export const PLANES = [
       { zone: "ZONE 3" },
       { zone: "TOTAL" },
     ],
-    zones: {
-      zone1Start: 1,
-      zone1End: 10,
-      zone2Start: 11,
-      zone2End: 20,
-      zone3Start: 21,
-      zone3End: 30,
-    },
-    maxPaxPerZone: {
-      zone1: 60,
-      zone2: 60,
-      zone3: 60,
-    },
+    zones: [1, 10, 11, 20, 21, 30],
+    maxPaxPerZone: [60, 60, 60],
   },
 ] as const satisfies Plane[];
 
@@ -407,23 +352,25 @@ export const DEFAULT_PLANE = PLANES.find(
 
 export const BUTTONS_VALUES = [
   {
-    name: "generate seat map",
+    name: "generate",
     en: "Generate Seat Map",
     pl: "Wygeneruj Seat Mapę",
   },
   {
-    name: "count sections",
+    name: "count",
     en: "Count sections",
     pl: "Policz sekcje",
   },
   {
-    name: "clear seat map",
+    name: "clear",
     en: "Clear Seat Map",
     pl: "Wyczyść Seat Mapę",
   },
   {
-    name: "print seat map",
+    name: "print",
     en: "Print Seat Map",
     pl: "Wydrukuj Seat Mapę",
   },
 ];
+
+export const LABELS = ["FWD ZONE", "MID ZONE", "AFT ZONE"];

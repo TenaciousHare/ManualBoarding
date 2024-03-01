@@ -10,7 +10,7 @@ import {
   emergencyProps,
   emptyProps,
   infantProps,
-} from "./Seat_MockData";
+} from "../../mockData/Seat_MockData";
 
 describe("Seat component", () => {
   it("renders seat with correct id and styles", () => {
