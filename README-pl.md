@@ -28,7 +28,7 @@ Aplikacja ma na celu przećwiczenie podliczania sekcji samolotu w warunkach mnie
    - Wydrukowanie Seat Mapy dla pracownika odbywa się poprzez kliknięcie "Wydrukuj Seat Mapę".
 4. **Podliczanie sekcji samolotu:**
 
-   - Kliknięcie "Pokaż totale" powoduje automatyczne podliczenie sekcji.
+   - Kliknięcie "Policz sekcje" powoduje automatyczne podliczenie sekcji.
      Podliczony arkusz można wydrukować dla siebie (numer arkusza pozostaje ten sam).
 
    Użytkownik może wygenerować kolejną Seat Mapę lub wyzerować wszystkie pola, klikając "Wyczyść Seat Mapę".

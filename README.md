@@ -32,7 +32,7 @@ The application aims to practice counting aircraft sections in less stressful co
 
 4. **Calculating Aircraft Sections:**
 
-   - Clicking "Show Totals" automatically calculates the section counts. The calculated sheet can be printed for your own records (the sheet number remains the same).
+   - Clicking "Count sections" automatically calculates the section counts. The calculated sheet can be printed for your own records (the sheet number remains the same).
 
 The user can generate another Seat Map or clear all fields by clicking "Clear Seat Map". Blank Seat Maps can be printed for training purposes at the airport.
 
