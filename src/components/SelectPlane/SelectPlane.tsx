@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { ChangeEvent, useContext } from "react";
 import { SeatMapContext } from "../../context/SeatMapContext";
 import { PLANES } from "../../constants";
 import styles from "./SelectPlane.module.css";
@@ -6,7 +6,7 @@ import styles from "./SelectPlane.module.css";
 export const SelectPlane = () => {
   const {
     state: { language },
-    handleSelectedPlane,
+    dispatch,
   } = useContext(SeatMapContext)!;
   const defaultValue = PLANES[0].type;
   return (
@@ -18,7 +18,9 @@ export const SelectPlane = () => {
         name="plane"
         id="plane"
         className={styles.selectPlane}
-        onChange={handleSelectedPlane}
+        onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+          dispatch({ type: "select", value: event.currentTarget.value })
+        }
         defaultValue={defaultValue}
       >
         {PLANES.map((PLANE) => (

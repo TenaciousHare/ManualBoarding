@@ -1,4 +1,4 @@
-import { DEFAULT_PLANE, Plane } from "../constants";
+import { DEFAULT_PLANE, PLANES, Plane } from "../constants";
 import { generateHexCode } from "./generateSeatMap/helpers/generateHexCode";
 import { countZones, initialTotals, Zones } from "./countZones/countZones";
 import { clearSeatMap } from "./generateSeatMap/clearSeatMap";
@@ -24,7 +24,7 @@ export type AppAction =
   | { type: "language"; language: boolean }
   | { type: "generate"; plane: Plane }
   | { type: "clear"; plane: Plane }
-  | { type: "select"; plane: Plane }
+  | { type: "select"; value: string }
   | { type: "print" }
   | {
       type: "count_totals";
@@ -50,10 +50,14 @@ export function appReducer(state: State, action: AppAction): State {
         code: "",
       };
     case "select":
+      const target = action.value;
+      const selectedPlane = PLANES.find(
+        (plane) => plane.type === target
+      ) as Plane;
       return {
         ...state,
-        plane: action.plane,
-        seatmap: clearSeatMap(action.plane),
+        plane: selectedPlane,
+        seatmap: clearSeatMap(selectedPlane),
         totals: { ...initialTotals },
         code: "",
       };
