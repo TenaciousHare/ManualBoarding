@@ -58,7 +58,7 @@ describe("ControlPanel component", () => {
       }
     );
 
-    const { handleSelectedPlane, dispatch } = mockValue;
+    const { dispatch } = mockValue;
 
     expect(screen.getByText("Select the aircraft type:")).toBeInTheDocument();
     expect(
@@ -85,8 +85,7 @@ describe("ControlPanel component", () => {
     fireEvent.change(select, {
       target: { value: "airbus-a320" },
     });
-    expect(handleSelectedPlane).toHaveBeenCalled();
-    expect(handleSelectedPlane).toHaveReturnedWith("airbus-a320");
+    expect(dispatch).toHaveBeenCalled();
 
     fireEvent.click(screen.getByRole("button", { name: "Generate Seat Map" }));
 

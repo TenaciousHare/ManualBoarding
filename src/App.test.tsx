@@ -81,21 +81,6 @@ describe("App", () => {
     printMock.mockRestore();
   });
 
-  it("calls console.error after selecting a non-existing plane from the list", () => {
-    const select = screen.getByRole("combobox");
-
-    const errorMock = vi.spyOn(console, "error").mockImplementation(() => {});
-
-    fireEvent.change(select, { target: { value: "non-existing-plane" } });
-
-    expect(errorMock).toHaveBeenCalledTimes(1);
-    expect(errorMock).toHaveBeenCalledWith(
-      "Nie znaleziono wybranego samolotu."
-    );
-
-    errorMock.mockRestore();
-  });
-
   it("updates totals after clicking count button", () => {
     const generateButton = screen.getByRole("button", { name: /Generate/i });
     const countButton = screen.getByRole("button", { name: /Count/i });

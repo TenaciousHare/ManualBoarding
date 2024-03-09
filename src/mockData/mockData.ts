@@ -63,7 +63,6 @@ export const mockValue = {
     seatmap: [],
   },
   dispatch: vi.fn(),
-  handleSelectedPlane: vi.fn(() => "airbus-a320"),
 };
 
 export const zeroMockValue = {
