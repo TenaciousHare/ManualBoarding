@@ -162,15 +162,15 @@ export const PLANES = [
     ],
     notExistingSeats: ["12A", "12F", "13A", "13B", "13C", "13D", "13E", "13F"],
     notExisitingRows: 13,
-    totalRows: ["rows 1-4", "rows 5-21", "rows 22-26", ""],
+    totalRows: ["rows 1-4", "rows 5-22", "rows 23-26", ""],
     totalLabels: [
       { zone: "ZONE 1" },
       { zone: "ZONE 2" },
       { zone: "ZONE 3" },
       { zone: "TOTAL" },
     ],
-    zones: [1, 4, 5, 21, 22, 26],
-    maxPaxPerZone: [24, 94, 30],
+    zones: [1, 4, 5, 22, 23, 26],
+    maxPaxPerZone: [24, 100, 24],
   },
   {
     name: "Boeing 737-8200",
